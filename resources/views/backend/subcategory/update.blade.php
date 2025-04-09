@@ -16,7 +16,12 @@
         <div class="col-lg-12 col-xl-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title mb-3">Subcategory Update Form</h4>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="card-title mb-3">Subcategory Update Form</h4>
+                        <a href="{{ route('ViewAllSubcategory')}}" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
 
                     <form class="needs-validation" method="POST" action="{{url('update/subcategory')}}" enctype="multipart/form-data">
                         @csrf
@@ -119,10 +124,10 @@
         @endif
 
         @if($subcategory->image && file_exists(public_path($subcategory->image)))
-            $(".dropify-preview").eq(0).css("display", "block");
-            $(".dropify-clear").eq(0).css("display", "block");
-            $(".dropify-filename-inner").eq(0).html("{{$subcategory->image}}");
-            $("span.dropify-render").eq(0).html("<img src='{{url($subcategory->image)}}'>");
+            $(".dropify-preview").eq(1).css("display", "block");
+            $(".dropify-clear").eq(1).css("display", "block");
+            $(".dropify-filename-inner").eq(1).html("{{$subcategory->image}}");
+            $("span.dropify-render").eq(1).html("<img src='{{url($subcategory->image)}}'>");
         @endif
     </script>
 @endsection
