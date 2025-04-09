@@ -291,18 +291,30 @@ class ProductController extends Controller
                     //     }
                     // })
                     ->editColumn('stock', function($data) {
-                        return DB::table('product_variants')
+                        $product = DB::table('product_variants')
                             ->where('product_id', $data->id)
-                            ->sum('stock'); 
+                            ->sum('stock');
+
+                        if($product > 0){
+                            return $product;
+                        } else {
+                            return $data->stock;
+                        } 
                     })
                     ->addIndexColumn()
                     ->addColumn('action', function($data){
-                        $link = env('APP_FRONTEND_URL')."/product/details/".$data->slug;
-                        $btn = ' <a target="_blank" href="'.$link.'" class="mb-1 btn-sm btn-success rounded d-inline-block" title="For Frontend Product View"><i class="fa fa-eye"></i></a>';
+                        $btn = '';
                         $btn .= ' <a href="'.url('edit/product').'/'.$data->slug.'" class="mb-1 btn-sm btn-warning rounded d-inline-block"><i class="fas fa-edit"></i></a>';
                         $btn .= ' <a href="javascript:void(0)" data-toggle="tooltip" data-id="'.$data->slug.'" data-original-title="Delete" class="btn-sm btn-danger rounded d-inline-block deleteBtn"><i class="fas fa-trash-alt"></i></a>';
                         return $btn;
                     })
+                    // ->addColumn('action', function($data){
+                    //     $link = env('APP_FRONTEND_URL')."/product/details/".$data->slug;
+                    //     $btn = ' <a target="_blank" href="'.$link.'" class="mb-1 btn-sm btn-success rounded d-inline-block" title="For Frontend Product View"><i class="fa fa-eye"></i></a>';
+                    //     $btn .= ' <a href="'.url('edit/product').'/'.$data->slug.'" class="mb-1 btn-sm btn-warning rounded d-inline-block"><i class="fas fa-edit"></i></a>';
+                    //     $btn .= ' <a href="javascript:void(0)" data-toggle="tooltip" data-id="'.$data->slug.'" data-original-title="Delete" class="btn-sm btn-danger rounded d-inline-block deleteBtn"><i class="fas fa-trash-alt"></i></a>';
+                    //     return $btn;
+                    // })
                     ->rawColumns(['action', 'price', 'status'])
                     ->make(true);
         }
