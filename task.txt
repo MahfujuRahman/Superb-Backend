@@ -1,0 +1,7 @@
+
+chest length sleeve waist weight - string
+size ratio - string
+fabrication - text
+fabric GSm/Ounce - string
+contact_number - string
+size chart - text - text editor
