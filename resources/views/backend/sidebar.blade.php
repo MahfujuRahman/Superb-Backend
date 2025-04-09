@@ -446,7 +446,7 @@
                     @endphp)</a></li>
         </ul>
     </li>
-    <li>
+    {{-- <li>
         <a href="javascript: void(0);" class="has-arrow"><i class="feather-box"></i><span>Old Purchase Product</span></a>
         <ul class="sub-menu" aria-expanded="false">
             <li><a href="{{ url('/add/new/product-purchase/quotation') }}">Add Quotation</a></li>
@@ -468,7 +468,7 @@
                 </a>
             </li>
         </ul>
-    </li>
+    </li> --}}
     <li>
         <a href="javascript: void(0);" class="has-arrow"><i class="feather-gift"></i><span>Promo Codes</span></a>
         <ul class="sub-menu" aria-expanded="false">

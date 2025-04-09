@@ -53,8 +53,13 @@
         <div class="col-lg-12 col-xl-12">
             <div class="card">
                 <div class="card-body" id="formApp">
-                    <h4 class="card-title mb-3">Purchase Product Quotation</h4>
-
+                   
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="card-title mb-3">Purchase Product Quotation</h4>
+                         <a href="{{ route('ViewAllPurchaseProductQuotation')}}" class="btn btn-secondary">
+                             <i class="fas fa-arrow-left"></i>
+                         </a>
+                     </div>
 
                     <form action="{{ url('save/new/purchase-product/quotation') }}" method="POST">
                         @csrf
