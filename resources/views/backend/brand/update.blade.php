@@ -167,7 +167,7 @@
     <script src="{{url('assets')}}/plugins/select2/select2.min.js"></script>
     <script>
         $('[data-toggle="select2"]').select2();
-
+        
         @if($data->logo && file_exists(public_path($data->logo)))
             $(".dropify-preview").eq(0).css("display", "block");
             $(".dropify-clear").eq(0).css("display", "block");
@@ -176,10 +176,10 @@
         @endif
 
         @if($data->banner && file_exists(public_path($data->banner)))
-            $(".dropify-preview").eq(0).css("display", "block");
-            $(".dropify-clear").eq(0).css("display", "block");
-            $(".dropify-filename-inner").eq(0).html("{{$data->banner}}");
-            $("span.dropify-render").eq(0).html("<img src='{{url($data->banner)}}'>");
+            $(".dropify-preview").eq(1).css("display", "block");
+            $(".dropify-clear").eq(1).css("display", "block");
+            $(".dropify-filename-inner").eq(1).html("{{$data->banner}}");
+            $("span.dropify-render").eq(1).html("<img src='{{url($data->banner)}}'>");
         @endif
     </script>
 
