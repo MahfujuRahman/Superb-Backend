@@ -34,7 +34,12 @@
         <div class="col-lg-12 col-xl-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title mb-3">Update Form</h4>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="card-title mb-3">Update Form</h4>
+                        <a href="{{ route('ViewAllExpense')}}" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
 
                     <form class="needs-validation" method="POST" action="{{ url('update/expense') }}"
                         enctype="multipart/form-data">
@@ -65,6 +70,7 @@
                                                     class="text-danger">*</span></label>
                                             <select id="expense_account_id" name="expense_account_id" class="form-control">
                                                 <option></option>
+                                               
                                             </select>
                                             <div class="invalid-feedback" style="display: block;">
                                                 @error('expense_account_id')

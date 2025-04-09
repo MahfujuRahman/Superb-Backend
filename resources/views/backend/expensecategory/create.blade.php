@@ -40,7 +40,12 @@
         <div class="col-lg-12 col-xl-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title mb-3">Expense Category</h4>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="card-title mb-3">Expense Category</h4>
+                        <a href="{{ route('ViewAllExpenseCategory')}}" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
 
                     <form class="needs-validation" method="POST" action="{{ url('save/new/expense-category') }}"
                         enctype="multipart/form-data">
@@ -58,18 +63,18 @@
                                             <label for="customer_category_id">Payment Type <span
                                                     class="text-danger">*</span></label>
                                             <select id="customer_category_id" name="customer_category_id"
-                                                class="form-control">                                                
+                                                class="form-control">
                                                 <option></option>
                                                 @foreach ($customer_categories as $category)
-                                                    <option value="{{ $category->id }}"
-                                                        {{ old('customer_category_id') == $category->id ? 'selected' : '' }}>
-                                                        {{ $category->title }}
-                                                    </option>
+                                                <option value="{{ $category->id }}" {{
+                                                    old('customer_category_id')==$category->id ? 'selected' : '' }}>
+                                                    {{ $category->title }}
+                                                </option>
                                                 @endforeach
                                             </select>
                                             <div class="invalid-feedback" style="display: block;">
                                                 @error('customer_category_id')
-                                                    <strong>{{ $message }}</strong>
+                                                <strong>{{ $message }}</strong>
                                                 @enderror
                                             </div>
                                         </div> --}}
@@ -81,15 +86,16 @@
                                                 class="form-control">
                                                 <option></option>
                                                 @foreach ($customer_source_types as $customer_source_type)
-                                                    <option value="{{ $customer_source_type->id }}"
-                                                        {{ old('customer_source_type_id') == $customer_source_type->id ? 'selected' : '' }}>
-                                                        {{ $customer_source_type->title }}
-                                                    </option>
+                                                <option value="{{ $customer_source_type->id }}" {{
+                                                    old('customer_source_type_id')==$customer_source_type->id ? 'selected' :
+                                                    '' }}>
+                                                    {{ $customer_source_type->title }}
+                                                </option>
                                                 @endforeach
                                             </select>
                                             <div class="invalid-feedback" style="display: block;">
                                                 @error('customer_source_type_id')
-                                                    <strong>{{ $message }}</strong>
+                                                <strong>{{ $message }}</strong>
                                                 @enderror
                                             </div>
                                         </div> --}}
@@ -99,24 +105,25 @@
                                             <select id="reference_id" name="reference_id" class="form-control">
                                                 <option></option>
                                                 @foreach ($users as $reference)
-                                                    <option value="{{ $reference->id }}"
-                                                        {{ old('reference_id') == $reference->id ? 'selected' : '' }}>
-                                                        {{ $reference->name }}
-                                                    </option>
+                                                <option value="{{ $reference->id }}" {{ old('reference_id')==$reference->id
+                                                    ? 'selected' : '' }}>
+                                                    {{ $reference->name }}
+                                                </option>
                                                 @endforeach
                                             </select>
                                             <div class="invalid-feedback" style="display: block;">
                                                 @error('reference_id')
-                                                    <strong>{{ $message }}</strong>
+                                                <strong>{{ $message }}</strong>
                                                 @enderror
                                             </div>
                                         </div> --}}
 
 
                                         <div class="form-group">
-                                            <label for="category_name">Category Name <span class="text-danger">*</span></label>
-                                            <input type="text" id="category_name" name="category_name"
-                                                class="form-control" placeholder="Enter category name Here">
+                                            <label for="category_name">Category Name <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" id="category_name" name="category_name" class="form-control"
+                                                placeholder="Enter category name Here">
                                             <div class="invalid-feedback" style="display: block;">
                                                 @error('category_name')
                                                     <strong>{{ $message }}</strong>
@@ -125,7 +132,8 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="category_code">Category Code <span class="text-danger">*</span></label>
+                                            <label for="category_code">Category Code <span
+                                                    class="text-danger">*</span></label>
                                             <input type="text" id="category_code" name="category_code" maxlength="60"
                                                 class="form-control" placeholder="Enter category code here">
                                             <div class="invalid-feedback" style="display: block;">
@@ -137,18 +145,19 @@
 
                                         {{-- <div class="form-group">
                                             <label for="email">Email <span class="text-danger">*</span></label>
-                                            <input type="text" id="email" name="email" maxlength="100"
-                                                class="form-control" placeholder="Enter email Here">
+                                            <input type="text" id="email" name="email" maxlength="100" class="form-control"
+                                                placeholder="Enter email Here">
                                             <div class="invalid-feedback" style="display: block;">
                                                 @error('email')
-                                                    <strong>{{ $message }}</strong>
+                                                <strong>{{ $message }}</strong>
                                                 @enderror
                                             </div>
                                         </div> --}}
 
                                         <div class="form-group">
                                             <label for="description">Description</label>
-                                            <textarea id="description" name="description" class="form-control" placeholder="Enter Description Here"></textarea>
+                                            <textarea id="description" name="description" class="form-control"
+                                                placeholder="Enter Description Here"></textarea>
                                             <div class="invalid-feedback" style="display: block;">
                                                 @error('description')
                                                     {{ $message }}
@@ -207,11 +216,11 @@
         //     tabsize: 2,
         //     height: 350
         // });
-        
+
     </script>
 
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('#customer_category_id').select2({
                 placeholder: 'Select Customer Category',
                 allowClear: true,

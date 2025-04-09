@@ -18,16 +18,24 @@
         <div class="col-lg-12 col-xl-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title mb-3">Category Update Form</h4>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="card-title mb-3">Category Update Form</h4>
+                        <a href="{{ route('ViewAllCategory')}}" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
 
-                    <form class="needs-validation" method="POST" action="{{url('update/category')}}" enctype="multipart/form-data">
+                    <form class="needs-validation" method="POST" action="{{url('update/category')}}"
+                        enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="id" value="{{$category->id}}">
 
                         <div class="form-group row">
-                            <label for="colFormLabel" class="col-sm-2 col-form-label">Name <span class="text-danger">*</span></label>
+                            <label for="colFormLabel" class="col-sm-2 col-form-label">Name <span
+                                    class="text-danger">*</span></label>
                             <div class="col-sm-10">
-                                <input type="text" name="name" class="form-control" value="{{$category->name}}" id="colFormLabel" placeholder="Category Name" required>
+                                <input type="text" name="name" class="form-control" value="{{$category->name}}"
+                                    id="colFormLabel" placeholder="Category Name" required>
                                 <div class="invalid-feedback" style="display: block;">
                                     @error('name')
                                         {{ $message }}
@@ -39,19 +47,22 @@
                         <div class="form-group row">
                             <label for="colFormLabel" class="col-sm-2 col-form-label">Change Icon</label>
                             <div class="col-sm-10">
-                                <input type="file" name="icon" class="dropify" data-height="100" data-max-file-size="1M" accept="image/*"/>
+                                <input type="file" name="icon" class="dropify" data-height="100" data-max-file-size="1M"
+                                    accept="image/*" />
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="colFormLabel" class="col-sm-2 col-form-label">Change Banner</label>
                             <div class="col-sm-10">
-                                <input type="file" name="banner_image" class="dropify" data-height="200" data-max-file-size="1M" accept="image/*"/>
+                                <input type="file" name="banner_image" class="dropify" data-height="200"
+                                    data-max-file-size="1M" accept="image/*" />
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="colFormLabe0" class="col-sm-2 col-form-label">Status <span class="text-danger">*</span></label>
+                            <label for="colFormLabe0" class="col-sm-2 col-form-label">Status <span
+                                    class="text-danger">*</span></label>
                             <div class="col-sm-3">
                                 <select name="status" class="form-control" id="colFormLabe0" required>
                                     <option value="">Select One</option>
@@ -101,7 +112,7 @@
                         <div class="form-group row">
                             <label for="colFormLabel" class="col-sm-2 col-form-label">Slug</label>
                             <div class="col-sm-3">
-                                <input type="text" name="slug" class="form-control" value="{{$category->slug}}" required/>
+                                <input type="text" name="slug" class="form-control" value="{{$category->slug}}" required />
                             </div>
                         </div>
 
