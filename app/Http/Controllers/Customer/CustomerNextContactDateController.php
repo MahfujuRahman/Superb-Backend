@@ -149,7 +149,8 @@ class CustomerNextContactDateController extends Controller
 
     public function deleteCustomerNextContactDate($slug)
     {
-        $data = CustomerContactHistory::where('slug', $slug)->first();
+        // dd($slug);
+        $data = CustomerNextContactDate::where('slug', $slug)->first();
 
         // $data->delete();
         $data->status = 'inactive';

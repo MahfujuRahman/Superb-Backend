@@ -33,7 +33,13 @@
         <div class="col-lg-12 col-xl-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title mb-3">Update Form</h4>
+                  
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="card-title mb-3">Update Form</h4>
+                        <a href="{{ route('ViewAllCustomerContactHistories')}}" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
 
                     <form class="needs-validation" method="POST"
                         action="{{ url('update/customer-contact-history') }}" enctype="multipart/form-data">
@@ -67,7 +73,7 @@
                                             </div>
                                         </div>
 
-                                        {{-- <div class="form-group">
+                                        <div class="form-group">
                                             <label for="employee_id">Employee<span
                                                     class="text-danger">*</span></label>
                                             <select id="employee_id" name="employee_id"
@@ -85,7 +91,7 @@
                                                     <strong>{{ $message }}</strong>
                                                 @enderror
                                             </div>
-                                        </div> --}}
+                                        </div>
 
 
 

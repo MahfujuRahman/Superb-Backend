@@ -74,6 +74,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title mb-3">View All Customer Next Date Contacts</h4>
+
                     <div class="table-responsive">
 
                         <table class="table table-bordered mb-0 data-table">
