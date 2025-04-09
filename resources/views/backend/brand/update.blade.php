@@ -38,7 +38,13 @@
         <div class="col-lg-12 col-xl-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title mb-3">Brand Update Form</h4>
+                    
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="card-title mb-3">Brand Update Form</h4>
+                        <a href="{{ route('ViewAllBrands')}}" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
 
                     <form class="needs-validation" method="POST" action="{{url('update/brand')}}" enctype="multipart/form-data">
                         @csrf
@@ -167,7 +173,7 @@
     <script src="{{url('assets')}}/plugins/select2/select2.min.js"></script>
     <script>
         $('[data-toggle="select2"]').select2();
-        
+
         @if($data->logo && file_exists(public_path($data->logo)))
             $(".dropify-preview").eq(0).css("display", "block");
             $(".dropify-clear").eq(0).css("display", "block");

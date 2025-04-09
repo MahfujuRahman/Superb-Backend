@@ -12,7 +12,13 @@
         <div class="col-lg-12 col-xl-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title mb-3">Model Create Form</h4>
+                   
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="card-title mb-3">Model Create Form</h4>
+                        <a href="{{ route('ViewAllModels')}}" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
 
                     <form class="needs-validation" method="POST" action="{{url('save/new/model')}}" enctype="multipart/form-data">
                         @csrf

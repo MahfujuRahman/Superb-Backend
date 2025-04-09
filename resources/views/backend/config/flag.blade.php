@@ -200,17 +200,17 @@
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ],
             initComplete: function() {
-                this.api().columns([1]).every(function() {
-                    var column = this;
-                    var input = document.createElement("input");
-                    $(input).appendTo($(column.footer()).empty())
-                        .on('change', function() {
-                            var val = $.fn.dataTable.util.escapeRegex($(this).val());
-                            column.search(val ? val : '', true, false).draw();
-                        });
-                });
+                // this.api().columns([2]).every(function() {
+                //     var column = this;
+                //     var input = document.createElement("input");
+                //     $(input).appendTo($(column.footer()).empty())
+                //         .on('change', function() {
+                //             var val = $.fn.dataTable.util.escapeRegex($(this).val());
+                //             column.search(val ? val : '', true, false).draw();
+                //         });
+                // });
 
-                this.api().columns([2]).every(function() {
+                this.api().columns([3]).every(function() {
                     var column = this;
                     var select = $('<select style="width:100%"><option value="">All</option></select>')
                         .appendTo($(column.footer()).empty())

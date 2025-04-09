@@ -48,7 +48,12 @@
         <div class="col-lg-12 col-xl-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title mb-3">Rearrange Brands by Dragging them</h4>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="card-title mb-3">Rearrange Brands by Dragging them</h4>
+                        <a href="{{ route('ViewAllBrands')}}" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
                     <small class="instruction_text">[N/B: Drag the Item using your Mouse Cursor to Rearrange their Order. Then Press the save button to save the Rearranged Order]</small>
 
                     <form action="{{url('save/rearranged/brands')}}" method="POST" enctype="multipart/form-data">

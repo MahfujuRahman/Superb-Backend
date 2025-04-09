@@ -8,7 +8,7 @@ use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
-use DataTables;
+use Yajra\DataTables\DataTables;
 
 class ProductModelController extends Controller
 {
