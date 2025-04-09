@@ -31,7 +31,12 @@
         <div class="col-lg-12 col-xl-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title mb-3">Update Form</h4>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="card-title mb-3">Update Form</h4>
+                         <a href="{{ route('ViewAllPurchaseProductCharge')}}" class="btn btn-secondary">
+                             <i class="fas fa-arrow-left"></i>
+                         </a>
+                     </div>
 
                     <form class="needs-validation" method="POST" action="{{url('update/purchase-product/charge')}}" enctype="multipart/form-data">
                         @csrf
@@ -71,7 +76,7 @@
 
 
                         <div class="form-group text-center pt-3">
-                            <a href="{{url('view/all/blogs')}}" style="width: 130px;" class="btn btn-danger d-inline-block text-white m-2" type="submit"><i class="mdi mdi-cancel"></i> Cancel</a>
+                            <a href="{{url('view/all/purchase-product/charge')}}" style="width: 130px;" class="btn btn-danger d-inline-block text-white m-2" type="submit"><i class="mdi mdi-cancel"></i> Cancel</a>
                             <button class="btn btn-primary m-2" style="width: 130px;" type="submit"><i class="fas fa-save"></i> Update</button>
                         </div>
 

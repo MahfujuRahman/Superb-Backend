@@ -73,9 +73,11 @@
         <div class="col-lg-12 col-xl-12">
             <div class="card">
                 <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="card-title mb-3"  style="display: inline-block;">View All Other Charges</h4>
+                        <a href="{{ route('AddNewPurchaseProductCharge') }}" class="btn btn-primary">Add Other Charge</a>
+                     </div>
                     
-                    <h4 class="card-title mb-3"  style="display: inline-block;">View All Other Charges</h4>
-                    <a href="{{ route('AddNewPurchaseProductCharge') }}" class="btn btn-primary">Add Other Charge</a>
                     <div class="table-responsive">
 
                         <table class="table table-bordered mb-0 data-table">
