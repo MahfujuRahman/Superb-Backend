@@ -25,7 +25,7 @@
                             <div class="col-lg-12 border-right">
                                 <div class="form-group">
                                     <label for="terms">Write Terms And Condition Here :</label>
-                                    <textarea id="terms" name="terms" class="form-control">{!! $data->terms !!}</textarea>
+                                    <textarea id="terms" name="terms" class="form-control">{!! $data->terms ?? '' !!}</textarea>
                                     <div class="invalid-feedback" style="display: block;">
                                         @error('terms')
                                             {{ $message }}

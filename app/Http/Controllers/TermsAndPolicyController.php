@@ -15,10 +15,11 @@ class TermsAndPolicyController extends Controller
     }
 
     public function updateTermsAndCondition(Request $request){
-        TermsAndPolicies::where('id', 1)->update([
-            'terms' => $request->terms,
-            'updated_at' => Carbon::now(),
-        ]);
+        $terms = TermsAndPolicies::firstOrNew(['id' => 1]);
+        $terms->terms = $request->terms;
+        $terms->updated_at = Carbon::now();
+        $terms->save();
+        
         Toastr::success('Terms & Condition Updated', 'Updated Successfully');
         return back();
     }
