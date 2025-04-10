@@ -330,9 +330,10 @@ class BannerController extends Controller
         $end_at = str_replace("/","-",$request->end_at);
         $end_at = date("Y-m-d H:i:s", strtotime($end_at));
 
-        $data = PromotionalBanner::where('id', 1)->first();
+        $data = PromotionalBanner::firstOrNew(['id' => 1]);
 
-        $icon = $data->icon;
+        $icon = request()->icon ?? ($data->icon ?? "");
+
         if ($request->hasFile('icon')){
 
             if($icon && file_exists(public_path($icon))){
@@ -351,7 +352,7 @@ class BannerController extends Controller
             $icon = "banner/" . $image_name;
         }
 
-        $product_image = $data->product_image;
+        $product_image = request()->product_image ?? ($data->product_image ?? "");
         if ($request->hasFile('product_image')){
 
             if($product_image && file_exists(public_path($product_image))){
@@ -370,7 +371,7 @@ class BannerController extends Controller
             $product_image = "banner/" . $image_name;
         }
 
-        $background_image = $data->background_image;
+        $background_image = request()->background_image ?? ($data->background_image ?? "");
         if ($request->hasFile('background_image')){
 
             if($background_image && file_exists(public_path($background_image))){
@@ -388,6 +389,7 @@ class BannerController extends Controller
             }
             $background_image = "banner/" . $image_name;
         }
+
 
         $data->icon = $icon;
         $data->product_image = $product_image;
