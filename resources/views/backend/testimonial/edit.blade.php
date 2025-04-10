@@ -16,8 +16,12 @@
         <div class="col-lg-12 col-xl-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title mb-3">Testimonial Update Form</h4>
-
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="card-title mb-3">Testimonial Update Form</h4>
+                        <a href="{{ route('ViewTestimonials')}}" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
                     <form class="needs-validation" method="POST" action="{{url('update/testimonial')}}" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="slug" value="{{$data->slug}}">

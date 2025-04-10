@@ -43,6 +43,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title mb-3">Testimonials</h4>
+                
                     <div class="table-responsive">
                         <table class="table table-bordered mb-0 data-table">
                             <thead>
