@@ -98,6 +98,10 @@
                             <label>pazila/Thana Name (Bangla)</label>
                             <input type="text" class="form-control" id="bn_name" name="bn_name">
                         </div>
+                        <div class="form-group">
+                            <label>Website</label>
+                            <input type="text" class="form-control" id="url" name="url" placeholder="https://">
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -233,11 +237,13 @@
         $('body').on('click', '.editBtn', function () {
             var id = $(this).data('id');
             $.get("{{ url('get/upazila/info') }}" +'/' + id, function (data) {
+                console.log(data);
                 $('#exampleModal').modal('show');
                 $('#upazila_id').val(id);
                 $('#district_name').val(data.district_name);
                 $('#name').val(data.name);
                 $('#bn_name').val(data.bn_name);
+                $('#url').val(data.url ? data.url : '');
             })
         });
 

@@ -81,6 +81,7 @@ class DeliveryChargeController extends Controller
         DB::table('upazilas')->where('id', $request->upazila_id)->update([
             'name' => $request->name,
             'bn_name' => $request->bn_name,
+            'url' => $request->url,
         ]);
         return response()->json(['success'=>'Updated successfully.']);
     }
