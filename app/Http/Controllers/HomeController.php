@@ -129,7 +129,8 @@ class HomeController extends Controller
             ->get();
 
 
-        return view('backend.dashboard',
+        return view(
+            'backend.dashboard',
             compact(
                 'recentCustomers',
                 'orderPayments',
@@ -348,16 +349,22 @@ class HomeController extends Controller
 
         // Calculate net profit (revenue - expenses) for the last 12 months
         $netProfit12Months = $totalRevenue12Months - $totalExpenses12Months;
+        // dd($assetAccounts, $endDate12Months);
 
         // Fetch cash flow data for the last 12 months (based on Assets and Liabilities)
-        $cashFlowData12Months = AcTransaction::selectRaw('YEAR(transaction_date) as year, MONTH(transaction_date) as month, 
+        if ($assetAccounts->isNotEmpty()) {
+            $cashFlowData12Months = AcTransaction::selectRaw('YEAR(transaction_date) as year, MONTH(transaction_date) as month, 
             SUM(CASE WHEN debit_account_id IN (' . $assetAccounts->implode(',') . ') THEN debit_amt ELSE 0 END) as cash_inflow,
             SUM(CASE WHEN credit_account_id IN (' . $assetAccounts->implode(',') . ') THEN credit_amt ELSE 0 END) as cash_outflow')
-            ->whereBetween('transaction_date', [$startDate12Months, $endDate12Months])
-            ->groupBy('year', 'month')
-            ->orderBy('year', 'asc')
-            ->orderBy('month', 'asc')
-            ->get();
+                ->whereBetween('transaction_date', [$startDate12Months, $endDate12Months])
+                ->groupBy('year', 'month')
+                ->orderBy('year', 'asc')
+                ->orderBy('month', 'asc')
+                ->get();
+        } else {
+            // Handle the case where no asset accounts are found, maybe return an empty result or handle the error
+            $cashFlowData12Months = collect(); // Empty collection
+        }
 
         // Format cash flow data for the last 12 months
         $cashFlowLabels12Months = [];
@@ -384,15 +391,21 @@ class HomeController extends Controller
         // Calculate net profit (revenue - expenses) for the last 30 days
         $netProfit30Days = $totalRevenue30Days - $totalExpenses30Days;
 
+
+
         // Fetch cash flow data for the last 30 days (based on Assets and Liabilities)
-        $cashFlowData30Days = AcTransaction::selectRaw('DATE(transaction_date) as date, 
+        if ($assetAccounts->isNotEmpty()) {
+            $cashFlowData30Days = AcTransaction::selectRaw('DATE(transaction_date) as date, 
             SUM(CASE WHEN debit_account_id IN (' . $assetAccounts->implode(',') . ') THEN debit_amt ELSE 0 END) as cash_inflow,
             SUM(CASE WHEN credit_account_id IN (' . $assetAccounts->implode(',') . ') THEN credit_amt ELSE 0 END) as cash_outflow')
-            ->whereBetween('transaction_date', [$startDate30Days, $endDate30Days])
-            ->groupBy('date')
-            ->orderBy('date', 'asc')
-            ->get();
-
+                ->whereBetween('transaction_date', [$startDate30Days, $endDate30Days])
+                ->groupBy('date')
+                ->orderBy('date', 'asc')
+                ->get();
+        } else {
+            // Handle the case where no asset accounts are found, maybe return an empty result or handle the error
+            $cashFlowData30Days = collect(); // Empty collection
+        }
         // Format cash flow data for the last 30 days
         $cashFlowLabels30Days = [];
         $cashFlowIncome30Days = [];
@@ -413,23 +426,25 @@ class HomeController extends Controller
             ->get();
 
         // Pass data to the view
-        return view('backend.accounts-dashboard', compact(
-            'totalRevenue12Months',
-            'totalExpenses12Months',
-            'netProfit12Months',
-            'cashFlowLabels12Months',
-            'cashFlowIncome12Months',
-            'cashFlowExpenses12Months',
-            'cashFlowNet12Months',
-            'totalRevenue30Days',
-            'totalExpenses30Days',
-            'netProfit30Days',
-            'cashFlowLabels30Days',
-            'cashFlowIncome30Days',
-            'cashFlowExpenses30Days',
-            'cashFlowNet30Days',
-            'recentTransactions'
-        )
+        return view(
+            'backend.accounts-dashboard',
+            compact(
+                'totalRevenue12Months',
+                'totalExpenses12Months',
+                'netProfit12Months',
+                'cashFlowLabels12Months',
+                'cashFlowIncome12Months',
+                'cashFlowExpenses12Months',
+                'cashFlowNet12Months',
+                'totalRevenue30Days',
+                'totalExpenses30Days',
+                'netProfit30Days',
+                'cashFlowLabels30Days',
+                'cashFlowIncome30Days',
+                'cashFlowExpenses30Days',
+                'cashFlowNet30Days',
+                'recentTransactions'
+            )
         );
     }
 
@@ -575,7 +590,6 @@ class HomeController extends Controller
             Toastr::error('Current Password is Wrong', 'Failed');
             return back();
         }
-
     }
 
     public function clearCache()
