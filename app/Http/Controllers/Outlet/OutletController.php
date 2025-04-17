@@ -210,9 +210,9 @@ class OutletController extends Controller
         //     }
         // }
 
-        // $data->delete();
-        $data->status = 'inactive';
-        $data->save();
+        $data->delete();
+        // $data->status = 'inactive';
+        // $data->save();
         return response()->json([
             'success' => 'Deleted successfully!',
             'data' => 1

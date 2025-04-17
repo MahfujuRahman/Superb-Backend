@@ -142,9 +142,9 @@ class VideoGalleryController extends Controller
     {
         $data = VideoGallery::where('slug', $slug)->first();
 
-        // $data->delete();
-        $data->status = 'inactive';
-        $data->save();
+        $data->delete();
+        // $data->status = 'inactive';
+        // $data->save();
         return response()->json([
             'success' => 'Deleted successfully!',
             'data' => 1

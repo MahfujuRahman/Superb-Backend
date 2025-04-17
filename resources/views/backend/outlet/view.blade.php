@@ -178,7 +178,7 @@
         $('body').on('click', '.deleteBtn', function() {
             var outletSlug = $(this).data("id");
             console.log("outletSlug - ", outletSlug);
-
+            
             if (confirm("Are You sure want to delete !")) {
                 $.ajax({
                     type: "GET",

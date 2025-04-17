@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Outlet;
+namespace App\Http\Controllers\Gallery;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Outlet\Models\Outlet;
@@ -198,6 +198,7 @@ class OutletController extends Controller
 
     public function deleteOutlet($slug)
     {
+        dd($slug, 'delete');
         $data = Outlet::where('slug', $slug)->first();
 
         // if ($data->productWarehouseRoom()->count() > 0) {
@@ -213,11 +214,11 @@ class OutletController extends Controller
         // }
 
         // $data->delete();
-        $data->status = 'inactive';
-        $data->save();
-        return response()->json([
-            'success' => 'Deleted successfully!',
-            'data' => 1
-        ]);
+        // $data->status = 'inactive';
+        // $data->save();
+        // return response()->json([
+        //     'success' => 'Deleted successfully!',
+        //     'data' => 1
+        // ]);
     }
 }
