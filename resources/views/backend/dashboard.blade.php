@@ -53,7 +53,7 @@
                 <div class="card-body">
                     <div class="row align-items-center">
                         <div class="col">
-                            <h6 class="text-uppercase font-size-12 text-muted mb-3">No Of Orders (Monthly)</h6>
+                            <h6 class="text-uppercase font-size-12 text-muted mb-3">Number Of Orders (Monthly)</h6>
                             <span class="h3 mb-0"> {{ number_format($countOrders[0]) }} </span>
                         </div>
                     </div> <!-- end row -->

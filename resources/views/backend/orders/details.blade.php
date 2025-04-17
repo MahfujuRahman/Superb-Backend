@@ -300,11 +300,12 @@
                                 <label style="margin-bottom: .2rem; font-weight: 500;">Order Status :</label>
                                 <select name="order_status" class="form-control" required>
                                     <option value="">Change Status</option>
-                                    <option value="0" @if($order->order_status == 0) selected @endif @if($order->order_status == 1 || $order->order_status == 2 || $order->order_status == 3 || $order->order_status == 4) disabled @endif>Pending</option>
-                                    <option value="1" @if($order->order_status == 1) selected @endif @if($order->order_status == 2 || $order->order_status == 3 || $order->order_status == 4) disabled @endif>Approved</option>
-                                    <option value="2" @if($order->order_status == 2) selected @endif @if($order->order_status == 0 || $order->order_status == 3 || $order->order_status == 4) disabled @endif>Intransit</option>
-                                    <option value="3" @if($order->order_status == 3) selected @endif @if($order->order_status == 1 || $order->order_status == 0 || $order->order_status == 4) disabled @endif>Delivered</option>
-                                    <option value="4" @if($order->order_status == 4) selected @endif @if($order->order_status == 2 || $order->order_status == 3) disabled @endif>Cancel</option>
+                                    <option value="0" @if($order->order_status == 0) selected @endif @if($order->order_status == 1 || $order->order_status == 2 || $order->order_status == 3 || $order->order_status == 4 || $order->order_status == 5) disabled @endif>Pending</option>
+                                    <option value="1" @if($order->order_status == 1) selected @endif @if($order->order_status == 2 || $order->order_status == 3 || $order->order_status == 4 || $order->order_status == 5) disabled @endif>Approved</option>
+                                    <option value="2" @if($order->order_status == 2) selected @endif @if($order->order_status == 0 || $order->order_status == 3 || $order->order_status == 4 || $order->order_status == 5) disabled @endif>Intransit</option>
+                                    <option value="3" @if($order->order_status == 3) selected @endif @if($order->order_status == 1 || $order->order_status == 0 || $order->order_status == 4 || $order->order_status == 5) disabled @endif>Delivered</option>
+                                    <option value="5" @if($order->order_status == 5) selected @endif @if($order->order_status == 1 || $order->order_status == 0 || $order->order_status == 2 || $order->order_status == 4) disabled @endif>Picked</option>
+                                    <option value="4" @if($order->order_status == 4) selected @endif @if($order->order_status == 2 || $order->order_status == 3 || $order->order_status == 5) disabled @endif>Cancel</option>
                                 </select>
                             </div>
                             <button type="submit" class="btn btn-success rounded w-100 mt-1">Save Changes</button>

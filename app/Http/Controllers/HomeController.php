@@ -129,8 +129,7 @@ class HomeController extends Controller
             ->get();
 
 
-        return view(
-            'backend.dashboard',
+        return view('backend.dashboard',
             compact(
                 'recentCustomers',
                 'orderPayments',
