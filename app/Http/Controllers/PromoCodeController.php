@@ -115,6 +115,8 @@ class PromoCodeController extends Controller
     }
 
     public function updatePromoCode(Request $request){
+
+        // dd($request->all());
         $request->validate([
             'title' => 'required|max:255',
             'type' => 'required',
