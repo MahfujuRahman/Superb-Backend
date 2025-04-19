@@ -638,6 +638,10 @@ class OrderController extends Controller
         $data = Order::where('id', $request->order_id)->first();
         if($data->order_status != $request->order_status){
 
+            if($request->order_status == 5 && $data->payment_method == 1){
+                $data->payment_status = 1;
+            }
+
             $data->order_remarks = $request->order_remarks;
             $data->order_status = $request->order_status;
             $data->estimated_dd = $request->estimated_dd;
