@@ -132,7 +132,16 @@
             ],
             initComplete: function() {
                 $('[data-toggle="switchery"]').each(function (idx, obj) {
-                    new Switchery($(this)[0], $(this).data());
+                    if (!$(this).data('switchery')) {
+                        new Switchery($(this)[0], $(this).data());
+                    }
+                });
+            },
+            drawCallback: function() {
+                $('[data-toggle="switchery"]').each(function (idx, obj) {
+                    if (!$(this).data('switchery')) {
+                        new Switchery($(this)[0], $(this).data());
+                    }
                 });
             }
         });

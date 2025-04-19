@@ -69,7 +69,7 @@ class UserController extends Controller
                         if($data->status == 1)
                             $btn = '<input type="checkbox" onchange="changeUserStatus('.$data->id.')" checked data-size="small" data-toggle="switchery" data-color="#53c024" data-secondary-color="#df3554"/>';
                         else
-                            $btn = '<input type="checkbox" data-size="small" onchange="changeUserStatus('.$data->id.')" data-toggle="switchery" data-color="#53c024" data-secondary-color="#df3554"/>';
+                            $btn = '<input type="checkbox" onchange="changeUserStatus('.$data->id.')" data-size="small"  data-toggle="switchery" data-color="#53c024" data-secondary-color="#df3554"/>';
                         $btn .= ' <a href="'.url('/edit/system/user')."/".$data->id.'" class="btn-sm btn-warning rounded"><i class="fas fa-edit"></i></a>';
                         // $btn .= ' <a href="javascript:void(0)" data-toggle="tooltip" data-id="'.$data->id.'" data-original-title="Delete" class="btn-sm btn-danger rounded deleteBtn"><i class="fas fa-trash-alt"></i></a>';
                         return $btn;
