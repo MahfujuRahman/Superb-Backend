@@ -2,6 +2,8 @@
 
 @section('header_css')
     <link href="{{url('assets')}}/plugins/dropify/dropify.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+
 
     <style>
         .title-btm-seperator{
@@ -135,15 +137,24 @@
     <script src="{{url('assets')}}/pages/fileuploads-demo.js"></script>
     <script src="{{url('assets') }}/js/spectrum.min.js"></script>
     {{-- <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script> --}}
-    <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+    {{-- <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script> --}}
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+
+    <script type="text/javascript">
+        $('#section_description').summernote({
+            placeholder: 'Write Description Here',
+            tabsize: 2,
+            height: 400
+        });
+    </script>
     
     <script>
 
-        CKEDITOR.replace('section_description', {
-            filebrowserUploadUrl: "{{route('ckeditor.upload', ['_token' => csrf_token() ])}}",
-            filebrowserUploadMethod: 'form',
-            height: 160,
-        });
+        // CKEDITOR.replace('section_description', {
+        //     filebrowserUploadUrl: "{{route('ckeditor.upload', ['_token' => csrf_token() ])}}",
+        //     filebrowserUploadMethod: 'form',
+        //     height: 160,
+        // });
 
         $("#bg_color").spectrum({
             preferredFormat: 'hex',
