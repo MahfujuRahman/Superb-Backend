@@ -429,13 +429,24 @@
                     (@php
                         echo DB::table('orders')
                             ->where('order_status', 1)
-                            ->orWhere('order_status', 2)
+                            ->count();
+                    @endphp)</a></li>
+            <li><a style="color: violet !important;" href="{{ url('/view/intransit/orders') }}">Intransit Orders
+                    (@php
+                        echo DB::table('orders')
+                            ->where('order_status', 2)
                             ->count();
                     @endphp)</a></li>
             <li><a style="color: #0c0 !important;" href="{{ url('/view/delivered/orders') }}">Delivered Orders
                     (@php
                         echo DB::table('orders')
                             ->where('order_status', 3)
+                            ->count();
+                    @endphp)</a></li>
+            <li><a style="color: tomato !important;" href="{{ url('/view/picked/orders') }}">Picked Orders
+                    (@php
+                        echo DB::table('orders')
+                            ->where('order_status', 5)
                             ->count();
                     @endphp)</a></li>
             <li><a style="color: red !important;" href="{{ url('/view/cancelled/orders') }}">Cancelled Orders

@@ -66,18 +66,7 @@ Route::get('/', function () {
     return redirect('/login');
 });
 
-Route::get('/clear', function () {
-    Artisan::call('cache:clear');
-    Artisan::call('config:clear');
-    Artisan::call('view:clear');
-    Artisan::call('route:clear');
-
-    // Artisan::call('config:cache');
-    // Artisan::call('route:cache');
-    // Artisan::call('view:cache');
-    // Artisan::call('key:generate');
-    return "Cleared!";
-});
+require __DIR__.'/cache.php';
 
 // Auth::routes();
 Auth::routes([
@@ -91,7 +80,6 @@ Route::middleware([CheckUserType::class, DemoMode::class])->group(function(){
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/crm-home', [HomeController::class, 'crm_index'])->name('crm.home');
     Route::get('/accounts-home', [HomeController::class, 'accounts_index'])->name('accounts.home');
-    Route::get('/clear/cache', [HomeController::class, 'clearCache'])->name('ClearCache');
     Route::get('/change/password/page', [HomeController::class, 'changePasswordPage'])->name('changePasswordPage');
     Route::post('/change/password', [HomeController::class, 'changePassword'])->name('changePassword');
     Route::get('ckeditor', [CkeditorController::class, 'index']);
@@ -533,6 +521,8 @@ Route::group(['middleware' => ['auth', 'CheckUserType', 'DemoMode']], function (
     Route::get('/view/approved/orders', [OrderController::class, 'viewApprovedOrders'])->name('ViewApprovedOrders');
     Route::get('/view/delivered/orders', [OrderController::class, 'viewDeliveredOrders'])->name('ViewDeliveredOrders');
     Route::get('/view/cancelled/orders', [OrderController::class, 'viewCancelledOrders'])->name('ViewCancelledOrders');
+    Route::get('/view/picked/orders', [OrderController::class, 'viewPickedOrders'])->name('ViewPickedOrders');
+    Route::get('/view/intransit/orders', [OrderController::class, 'viewIntransitOrders'])->name('ViewIntransitOrders');
     Route::get('/order/details/{slug}', [OrderController::class, 'orderDetails'])->name('OrderDetails');
     Route::get('/cancel/order/{slug}', [OrderController::class, 'cancelOrder'])->name('CancelOrder');
     Route::get('/approve/order/{slug}', [OrderController::class, 'approveOrder'])->name('ApproveOrder');

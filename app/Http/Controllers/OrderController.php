@@ -35,9 +35,11 @@ class OrderController extends Controller
                         } elseif($data->order_status == 1) {
                             return '<span class="alert alert-info" style="padding: 2px 10px !important;">Approved</span>';
                         } elseif($data->order_status == 2) {
-                            return '<span class="alert alert-info" style="padding: 2px 10px !important;">Intransit</span>';
+                            return '<span class="alert alert-primary" style="padding: 2px 10px !important;">Intransit</span>';
                         } elseif($data->order_status == 3) {
                             return '<span class="alert alert-success" style="padding: 2px 10px !important;">Delivered</span>';
+                        } elseif($data->order_status == 5) {
+                            return '<span class="alert alert-dark" style="padding: 2px 10px !important;">Picked</span>';
                         } else {
                             return '<span class="alert alert-danger" style="padding: 2px 10px !important;">Cancelled</span>';
                         }
@@ -80,7 +82,7 @@ class OrderController extends Controller
 
                         if($data->order_status == 1){
                             $btn .= ' <a href="javascript:void(0)" data-toggle="tooltip" title="Cancel" data-id="'.$data->slug.'" data-original-title="Cancel" class="d-inline-block btn-sm btn-danger rounded cancelBtn"><i class="fa fa-times"></i></a>';
-                            $btn .= ' <a href="javascript:void(0)" data-toggle="tooltip" title="Approve" data-id="'.$data->slug.'" data-original-title="Check" class="d-inline-block btn-sm btn-success rounded intransitBtn"><i class="fas fa-check"></i></a>';
+                            // $btn .= ' <a href="javascript:void(0)" data-toggle="tooltip" title="Approve" data-id="'.$data->slug.'" data-original-title="Check" class="d-inline-block btn-sm btn-success rounded intransitBtn"><i class="fas fa-check"></i></a>';
                         }
 
                         if($data->order_status == 2){
@@ -117,9 +119,11 @@ class OrderController extends Controller
                         } elseif($data->order_status == 1) {
                             return '<span class="alert alert-info" style="padding: 2px 10px !important;">Approved</span>';
                         } elseif($data->order_status == 2) {
-                            return '<span class="alert alert-info" style="padding: 2px 10px !important;">Intransit</span>';
+                            return '<span class="alert alert-primary" style="padding: 2px 10px !important;">Intransit</span>';
                         } elseif($data->order_status == 3) {
                             return '<span class="alert alert-success" style="padding: 2px 10px !important;">Delivered</span>';
+                        } elseif($data->order_status == 5) {
+                            return '<span class="alert alert-dark" style="padding: 2px 10px !important;">Picked</span>';
                         } else {
                             return '<span class="alert alert-danger" style="padding: 2px 10px !important;">Cancelled</span>';
                         }
@@ -169,7 +173,7 @@ class OrderController extends Controller
     public function viewApprovedOrders(Request $request){
         if ($request->ajax()) {
 
-            $data = Order::where('order_status', 1)->orWhere('order_status', 2)->orderBy('id', 'desc')->get();
+            $data = Order::where('order_status', 1)->orderBy('id', 'desc')->get();
 
             return Datatables::of($data)
                     ->editColumn('order_status', function($data) {
@@ -178,9 +182,11 @@ class OrderController extends Controller
                         } elseif($data->order_status == 1) {
                             return '<span class="alert alert-info" style="padding: 2px 10px !important;">Approved</span>';
                         } elseif($data->order_status == 2) {
-                            return '<span class="alert alert-info" style="padding: 2px 10px !important;">Intransit</span>';
+                            return '<span class="alert alert-primary" style="padding: 2px 10px !important;">Intransit</span>';
                         } elseif($data->order_status == 3) {
                             return '<span class="alert alert-success" style="padding: 2px 10px !important;">Delivered</span>';
+                        } elseif($data->order_status == 5) {
+                            return '<span class="alert alert-dark" style="padding: 2px 10px !important;">Picked</span>';
                         } else {
                             return '<span class="alert alert-danger" style="padding: 2px 10px !important;">Cancelled</span>';
                         }
@@ -243,6 +249,85 @@ class OrderController extends Controller
         return view('backend.orders.approved');
     }
 
+    public function viewIntransitOrders(Request $request){
+        if ($request->ajax()) {
+
+            $data = Order::where('order_status', 2)->orderBy('id', 'desc')->get();
+
+            return Datatables::of($data)
+                    ->editColumn('order_status', function($data) {
+                        if($data->order_status == 0){
+                            return '<span class="alert alert-warning" style="padding: 2px 10px !important;">Pending</span>';
+                        } elseif($data->order_status == 1) {
+                            return '<span class="alert alert-info" style="padding: 2px 10px !important;">Approved</span>';
+                        } elseif($data->order_status == 2) {
+                            return '<span class="alert alert-primary" style="padding: 2px 10px !important;">Intransit</span>';
+                        } elseif($data->order_status == 3) {
+                            return '<span class="alert alert-success" style="padding: 2px 10px !important;">Delivered</span>';
+                        } elseif($data->order_status == 5) {
+                            return '<span class="alert alert-dark" style="padding: 2px 10px !important;">Picked</span>';
+                        } else {
+                            return '<span class="alert alert-danger" style="padding: 2px 10px !important;">Cancelled</span>';
+                        }
+                    })
+                    ->editColumn('payment_method', function($data) {
+                        if($data->payment_method == NULL){
+                            return '<span class="alert alert-danger" style="padding: 2px 10px !important;">Unpaid</span>';
+                        } elseif($data->payment_method == 1) {
+                            return '<span class="alert alert-info" style="padding: 2px 10px !important;">COD</span>';
+                        } elseif($data->payment_method == 2) {
+                            return '<span class="alert alert-success" style="padding: 2px 10px !important;">bKash</span>';
+                        } elseif($data->payment_method == 3) {
+                            return '<span class="alert alert-success" style="padding: 2px 10px !important;">Nagad</span>';
+                        } else {
+                            return '<span class="alert alert-success" style="padding: 2px 10px !important;">Card</span>';
+                        }
+                    })
+                    ->editColumn('payment_status', function($data) {
+                        if($data->payment_status == 0){
+                            return '<span class="alert alert-danger" style="padding: 2px 10px !important;">Unpaid</span>';
+                        } elseif($data->payment_status == 1) {
+                            return '<span class="alert alert-success" style="padding: 2px 10px !important;">Paid</span>';
+                        } else {
+                            return '<span class="alert alert-danger" style="padding: 2px 10px !important;">Failed</span>';
+                        }
+                    })
+                    ->editColumn('sub_total', function($data) {
+                        return "৳ ". number_format($data->sub_total, 2);
+                    })
+                    ->editColumn('discount', function($data) {
+                        return "৳ ". number_format($data->discount, 2);
+                    })
+                    ->editColumn('delivery_fee', function($data) {
+                        return "৳ ". number_format($data->delivery_fee, 2);
+                    })
+                    ->editColumn('total', function($data) {
+                        return "৳ ". number_format($data->total, 2);
+                    })
+                    ->addIndexColumn()
+                    ->addColumn('action', function($data){
+                        $btn = ' <a href="'.url('order/details').'/'.$data->slug.'" title="Order Details" class="d-inline-block btn-sm btn-info rounded"><i class="fas fa-list-ul"></i></a>';
+
+                        if($data->order_status == 1){
+                            $btn .= ' <a href="javascript:void(0)" data-toggle="tooltip" title="Cancel" data-id="'.$data->slug.'" data-original-title="Delete" class="d-inline-block btn-sm btn-danger rounded cancelBtn"><i class="fa fa-times"></i></a>';
+                            $btn .= ' <a href="javascript:void(0)" data-toggle="tooltip" title="Approve" data-id="'.$data->slug.'" data-original-title="Delete" class="d-inline-block btn-sm btn-success rounded intransitBtn"><i class="fas fa-check"></i></a>';
+                        }
+                        if($data->order_status == 2){
+                            $btn .= ' <a href="javascript:void(0)" data-toggle="tooltip" title="Deliver" data-id="'.$data->slug.'" data-original-title="Delete" class="d-inline-block btn-sm btn-success rounded deliveryBtn"><i class="fas fa-truck"></i></a>';
+                        }
+
+                        if(Auth::user()->user_type == 1){
+                            $btn .= ' <a href="javascript:void(0)" data-toggle="tooltip" title="Delete" data-id="'.$data->slug.'" data-original-title="Delete" class="d-inline-block btn-sm btn-danger rounded deleteBtn"><i class="fas fa-trash-alt"></i></a>';
+                        }
+
+                        return $btn;
+                    })
+                    ->rawColumns(['action', 'order_status', 'payment_method', 'payment_status'])
+                    ->make(true);
+        }
+        return view('backend.orders.intransit');
+    }
+
     public function viewDeliveredOrders(Request $request){
         if ($request->ajax()) {
 
@@ -255,9 +340,11 @@ class OrderController extends Controller
                         } elseif($data->order_status == 1) {
                             return '<span class="alert alert-info" style="padding: 2px 10px !important;">Approved</span>';
                         } elseif($data->order_status == 2) {
-                            return '<span class="alert alert-info" style="padding: 2px 10px !important;">Intransit</span>';
+                            return '<span class="alert alert-primary" style="padding: 2px 10px !important;">Intransit</span>';
                         } elseif($data->order_status == 3) {
                             return '<span class="alert alert-success" style="padding: 2px 10px !important;">Delivered</span>';
+                        } elseif($data->order_status == 5) {
+                            return '<span class="alert alert-dark" style="padding: 2px 10px !important;">Picked</span>';
                         } else {
                             return '<span class="alert alert-danger" style="padding: 2px 10px !important;">Cancelled</span>';
                         }
@@ -324,9 +411,11 @@ class OrderController extends Controller
                         } elseif($data->order_status == 1) {
                             return '<span class="alert alert-info" style="padding: 2px 10px !important;">Approved</span>';
                         } elseif($data->order_status == 2) {
-                            return '<span class="alert alert-info" style="padding: 2px 10px !important;">Intransit</span>';
+                            return '<span class="alert alert-primary" style="padding: 2px 10px !important;">Intransit</span>';
                         } elseif($data->order_status == 3) {
                             return '<span class="alert alert-success" style="padding: 2px 10px !important;">Delivered</span>';
+                        } elseif($data->order_status == 5) {
+                            return '<span class="alert alert-dark" style="padding: 2px 10px !important;">Picked</span>';
                         } else {
                             return '<span class="alert alert-danger" style="padding: 2px 10px !important;">Cancelled</span>';
                         }
@@ -379,6 +468,76 @@ class OrderController extends Controller
                     ->make(true);
         }
         return view('backend.orders.cancelled');
+    }
+
+    public function viewPickedOrders(Request $request){
+        if ($request->ajax()) {
+            $data = Order::where('order_status', 5)->orderBy('id', 'desc')->get();
+
+            return Datatables::of($data)
+                    ->editColumn('order_status', function($data) {
+                        if($data->order_status == 0){
+                            return '<span class="alert alert-warning" style="padding: 2px 10px !important;">Pending</span>';
+                        } elseif($data->order_status == 1) {
+                            return '<span class="alert alert-info" style="padding: 2px 10px !important;">Approved</span>';
+                        } elseif($data->order_status == 2) {
+                            return '<span class="alert alert-primary" style="padding: 2px 10px !important;">Intransit</span>';
+                        } elseif($data->order_status == 3) {
+                            return '<span class="alert alert-success" style="padding: 2px 10px !important;">Delivered</span>';
+                        } elseif($data->order_status == 5) {
+                            return '<span class="alert alert-dark" style="padding: 2px 10px !important;">Picked</span>';
+                        } else {
+                            return '<span class="alert alert-danger" style="padding: 2px 10px !important;">Cancelled</span>';
+                        }
+                    })
+                    ->editColumn('payment_method', function($data) {
+                        if($data->payment_method == NULL){
+                            return '<span class="alert alert-danger" style="padding: 2px 10px !important;">Unpaid</span>';
+                        } elseif($data->payment_method == 1) {
+                            return '<span class="alert alert-info" style="padding: 2px 10px !important;">COD</span>';
+                        } elseif($data->payment_method == 2) {
+                            return '<span class="alert alert-success" style="padding: 2px 10px !important;">bKash</span>';
+                        } elseif($data->payment_method == 3) {
+                            return '<span class="alert alert-success" style="padding: 2px 10px !important;">Nagad</span>';
+                        } else {
+                            return '<span class="alert alert-success" style="padding: 2px 10px !important;">Card</span>';
+                        }
+                    })
+                    ->editColumn('payment_status', function($data) {
+                        if($data->payment_status == 0){
+                            return '<span class="alert alert-danger" style="padding: 2px 10px !important;">Unpaid</span>';
+                        } elseif($data->payment_status == 1) {
+                            return '<span class="alert alert-success" style="padding: 2px 10px !important;">Paid</span>';
+                        } else {
+                            return '<span class="alert alert-danger" style="padding: 2px 10px !important;">Failed</span>';
+                        }
+                    })
+                    ->editColumn('sub_total', function($data) {
+                        return "৳ ". number_format($data->sub_total, 2);
+                    })
+                    ->editColumn('discount', function($data) {
+                        return "৳ ". number_format($data->discount, 2);
+                    })
+                    ->editColumn('delivery_fee', function($data) {
+                        return "৳ ". number_format($data->delivery_fee, 2);
+                    })
+                    ->editColumn('total', function($data) {
+                        return "৳ ". number_format($data->total, 2);
+                    })
+                    ->addIndexColumn()
+                    ->addColumn('action', function($data){
+                        $btn = ' <a href="'.url('order/details').'/'.$data->slug.'" title="Order Details" class="d-inline-block btn-sm btn-info rounded"><i class="fas fa-list-ul"></i></a>';
+
+                        if(Auth::user()->user_type == 1){
+                            $btn .= ' <a href="javascript:void(0)" data-toggle="tooltip" title="Delete" data-id="'.$data->slug.'" data-original-title="Delete" class="d-inline-block btn-sm btn-danger rounded deleteBtn"><i class="fas fa-trash-alt"></i></a>';
+                        }
+
+                        return $btn;
+                    })
+                    ->rawColumns(['action', 'order_status', 'payment_method', 'payment_status'])
+                    ->make(true);
+        }
+        return view('backend.orders.picked');
     }
 
     public function orderDetails($slug){
