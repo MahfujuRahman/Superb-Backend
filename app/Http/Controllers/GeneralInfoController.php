@@ -20,11 +20,10 @@ class GeneralInfoController extends Controller
     }
 
     public function updateAboutUsPage(Request $request){
-        $data = AboutUs::where('id', 1)->first();
+        $data = AboutUs::first();
 
-        $banner_bg = $data->banner_bg;
+        $banner_bg = $data->banner_bg ?? '';
         if ($request->hasFile('banner_bg')){
-
             if($banner_bg != '' && file_exists(public_path($banner_bg))){
                 unlink(public_path($banner_bg));
             }
@@ -37,7 +36,7 @@ class GeneralInfoController extends Controller
         }
 
 
-        $image = $data->image;
+        $image = $data->image ?? '';
         if ($request->hasFile('image')){
 
             if($image != '' && file_exists(public_path($image))){
@@ -51,17 +50,31 @@ class GeneralInfoController extends Controller
             $image = "uploads/about_us/" . $image_name;
         }
 
-        AboutUs::where('id', 1)->update([
-            'banner_bg' => $banner_bg,
-            'image' => $image,
-            'section_sub_title' => $request->section_sub_title,
-            'section_title' => $request->section_title,
-            'section_description' => $request->section_description,
-            'btn_icon_class' => $request->btn_icon_class,
-            'btn_text' => $request->btn_text,
-            'btn_link' => $request->btn_link,
-            'updated_at' => Carbon::now(),
-        ]);
+        if($data){
+            $data->update([
+                'banner_bg' => $banner_bg ? $banner_bg : $data->banner_bg,
+                'image' => $image ? $image : $data->image,
+                'section_sub_title' => $request->section_sub_title,
+                'section_title' => $request->section_title,
+                'section_description' => $request->section_description,
+                'btn_icon_class' => $request->btn_icon_class,
+                'btn_text' => $request->btn_text,
+                'btn_link' => $request->btn_link,
+                'updated_at' => Carbon::now(),
+            ]);
+        }else{
+            AboutUs::create([
+                'banner_bg' => $banner_bg ? $banner_bg : '',
+                'image' => $image ? $image : '',
+                'section_sub_title' => $request->section_sub_title,
+                'section_title' => $request->section_title,
+                'section_description' => $request->section_description,
+                'btn_icon_class' => $request->btn_icon_class,
+                'btn_text' => $request->btn_text,
+                'btn_link' => $request->btn_link,
+                'created_at' => Carbon::now(),
+            ]);
+        }
 
         Toastr::success('About Us Info Updated', 'Success');
         return back();
