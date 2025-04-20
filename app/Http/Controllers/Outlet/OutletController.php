@@ -179,7 +179,7 @@ class OutletController extends Controller
         $data->contact_number_3 = $request->contact_number_3 ?? $data->contact_number_3;
         $data->map = $request->map ?? $data->map;
         $data->description = $request->description ?? $data->description;
-        $data->image = json_encode($images, JSON_UNESCAPED_SLASHES); // Update the image field with new images
+        $data->image = !empty($images) ? json_encode($images, JSON_UNESCAPED_SLASHES) : $data->image; // Update the image field with new images or keep existing
 
         if ($data->title != $request->title) {
             $data->slug = Str::slug($request->title) . time();
