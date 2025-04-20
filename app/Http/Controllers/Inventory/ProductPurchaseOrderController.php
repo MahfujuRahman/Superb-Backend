@@ -166,7 +166,7 @@ class ProductPurchaseOrderController extends Controller
         if ($request->ajax()) {
 
             $data = ProductPurchaseOrder::with('creator', 'order_products')
-                ->where('status', 'active')
+                // ->where('status', 'active')
                 ->orderBy('id', 'desc') // Order by the ID
                 ->get();
 
@@ -404,9 +404,9 @@ class ProductPurchaseOrderController extends Controller
     {
         $data = ProductPurchaseOrder::where('slug', $slug)->first();
 
-        // $data->delete();
-        $data->status = 'inactive';
-        $data->save();
+        $data->delete();
+        // $data->status = 'inactive';
+        // $data->save();
         return response()->json([
             'success' => 'Deleted successfully!',
             'data' => 1

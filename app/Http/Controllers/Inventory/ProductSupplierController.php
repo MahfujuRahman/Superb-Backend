@@ -203,9 +203,9 @@ class ProductSupplierController extends Controller
         $product_supplier_contact = ProductSupplierContact::where('product_supplier_id', $data->id)->first();
         $product_supplier_contact->delete();
 
-        // $data->delete();
-        $data->status = 'inactive';
-        $data->save();
+        $data->delete();
+        // $data->status = 'inactive';
+        // $data->save();
         return response()->json([
             'success' => 'Deleted successfully!',
             'data' => 1

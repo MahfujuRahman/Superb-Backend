@@ -107,7 +107,6 @@ class PaymenttypeController extends Controller
     {
         if ($request->ajax()) {
             $data = DbPaymentType::with('user')
-                        ->where('status', 'active')
                         ->orderBy('id', 'DESC')
                         ->get();
 
@@ -172,9 +171,9 @@ class PaymenttypeController extends Controller
     {
         $data = DbPaymentType::where('slug', $slug)->first();
 
-        // $data->delete();
-        $data->status = 'inactive';
-        $data->save();
+        $data->delete();
+        // $data->status = 'inactive';
+        // $data->save();
         
         return response()->json([
             'success' => 'Deleted successfully!',

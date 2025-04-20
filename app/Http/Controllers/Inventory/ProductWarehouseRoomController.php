@@ -90,7 +90,7 @@ class ProductWarehouseRoomController extends Controller
         if ($request->ajax()) {
             $data = DB::table('product_warehouse_rooms')
                 ->join('product_warehouses', 'product_warehouse_rooms.product_warehouse_id', '=', 'product_warehouses.id')
-                ->where('product_warehouse_rooms.status', 'active') // Only select 'active' status
+                // ->where('product_warehouse_rooms.status', 'active') // Only select 'active' status
                 ->select('product_warehouse_rooms.*', 'product_warehouses.title as warehouse_title', 'product_warehouse_rooms.title as room_title')
                 ->orderBy('product_warehouse_rooms.id', 'desc')
                 ->get();
@@ -192,8 +192,9 @@ class ProductWarehouseRoomController extends Controller
             }
         }
 
-        $data->status = 'inactive';
-        $data->save();
+        $data->delete();
+        // $data->status = 'inactive';
+        // $data->save();
         return response()->json([
             'success' => 'Deleted successfully!',
             'data' => 1

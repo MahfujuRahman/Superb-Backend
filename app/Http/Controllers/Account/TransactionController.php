@@ -104,7 +104,6 @@ class TransactionController extends Controller
         if ($request->ajax()) {
             $data = AcTransaction::with('debitAccount', 'creditAccount', 'user')
                 ->where('transaction_type', 'DEPOSIT')
-                ->where('status', 'active')
                 ->orderBy('id', 'DESC')
                 ->get();
 
@@ -271,9 +270,9 @@ class TransactionController extends Controller
     {
         $data = AcTransaction::where('slug', $slug)->first();
 
-        // $data->delete();
-        $data->status = 'inactive';
-        $data->save();
+        $data->delete();
+        // $data->status = 'inactive';
+        // $data->save();
 
         return response()->json([
             'success' => 'Deleted successfully!',

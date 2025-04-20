@@ -137,6 +137,12 @@ class PromoCodeController extends Controller
             return back();
         }
 
+        $expireDateTimestamp = strtotime(str_replace("/", "-", $request->expire_date));
+        if ($expireDateTimestamp && $expireDateTimestamp < now()->timestamp) {
+            Toastr::error('The date is expired. You can’t change the status.', 'Failed');
+            return back();
+        }
+
         $data = PromoCode::where('slug', $request->slug)->first();
 
         $icon = $data->icon;

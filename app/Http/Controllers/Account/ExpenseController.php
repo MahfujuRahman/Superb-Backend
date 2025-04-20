@@ -143,7 +143,6 @@ class ExpenseController extends Controller
         // dd(5);
         if ($request->ajax()) {
             $data = DbExpense::with('user', 'expense_category', 'payment_type')
-                ->where('status', 'active')
                 ->orderBy('id', 'DESC')
                 ->get();
 
@@ -353,9 +352,9 @@ class ExpenseController extends Controller
     {
         $data = DbExpense::where('slug', $slug)->first();
 
-        // $data->delete();
-        $data->status = 'inactive';
-        $data->save();
+        $data->delete();
+        // $data->status = 'inactive';
+        // $data->save();
 
         return response()->json([
             'success' => 'Deleted successfully!',

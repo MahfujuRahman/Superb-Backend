@@ -88,7 +88,7 @@ class ProductWarehouseRoomCartoonController extends Controller
                 )
                 ->whereNotNull('product_warehouse_room_cartoons.title') // Exclude records with null cartoon_title
                 ->where('product_warehouse_room_cartoons.title', '!=', '') // Exclude empty cartoon_title
-                ->where('product_warehouse_room_cartoons.status', 'active') // Filter for active cartoons
+                // ->where('product_warehouse_room_cartoons.status', 'active') // Filter for active cartoons
                 ->orderBy('product_warehouse_room_cartoons.id', 'desc') // Order by cartoon id
                 ->get();
 
@@ -174,9 +174,9 @@ class ProductWarehouseRoomCartoonController extends Controller
     {
         $data = ProductWarehouseRoomCartoon::where('slug', $slug)->first();
 
-        // $data->delete();
-        $data->status = 'inactive';
-        $data->save();
+        $data->delete();
+        // $data->status = 'inactive';
+        // $data->save();
         return response()->json([
             'success' => 'Deleted successfully!',
             'data' => 1

@@ -80,8 +80,7 @@ class OutletController extends Controller
     {
 
         if ($request->ajax()) {
-            $data = Outlet::where('status', 'active')  // Filter active records
-                ->orderBy('id', 'desc')  // Order by ID in descending order
+            $data = Outlet::orderBy('id', 'desc')  // Order by ID in descending order
                 ->get();
 
             // dd($data);

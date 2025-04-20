@@ -73,8 +73,7 @@ class VideoGalleryController extends Controller
     {
 
         if ($request->ajax()) {
-            $data = VideoGallery::where('status', 'active')  // Filter active records
-                ->orderBy('id', 'desc')  // Order by ID in descending order
+            $data = VideoGallery::orderBy('id', 'desc')  // Order by ID in descending order
                 ->get();
 
             // dd($data);

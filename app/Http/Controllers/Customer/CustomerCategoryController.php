@@ -54,8 +54,7 @@ class CustomerCategoryController extends Controller
     {   
         
         if ($request->ajax()) {
-            $data = CustomerCategory::where('status', 'active')  // Filter active records
-                ->orderBy('id', 'desc')  // Order by ID in descending order
+            $data = CustomerCategory::orderBy('id', 'desc')  // Order by ID in descending order
                 ->get();
 
 
@@ -135,9 +134,9 @@ class CustomerCategoryController extends Controller
         //     }
         // }
 
-        // $data->delete();
-        $data->status = 'inactive';
-        $data->save();
+        $data->delete();
+        // $data->status = 'inactive';
+        // $data->save();
         return response()->json([
             'success' => 'Deleted successfully!',
             'data' => 1

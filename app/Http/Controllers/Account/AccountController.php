@@ -73,7 +73,6 @@ class AccountController extends Controller
     {
         if ($request->ajax()) {
             $data = AcAccount::with('user')
-                ->where('status', 'active')
                 ->orderBy('id', 'DESC')
                 ->get();
 
@@ -150,9 +149,9 @@ class AccountController extends Controller
     {
         $data = AcAccount::where('slug', $slug)->first();
 
-        // $data->delete();
-        $data->status = 'inactive';
-        $data->save();
+        $data->delete();
+        // $data->status = 'inactive';
+        // $data->save();
 
         return response()->json([
             'success' => 'Deleted successfully!',

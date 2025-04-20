@@ -67,8 +67,7 @@ class CustomerNextContactDateController extends Controller
     public function viewAllCustomerNextContactDate(Request $request)
     {
         if ($request->ajax()) {
-            $data = CustomerNextContactDate::where('status', 'active')
-                                        ->with(['customer'])
+            $data = CustomerNextContactDate::with(['customer'])
                                         ->orderBy('id', 'DESC')
                                         ->get();
 

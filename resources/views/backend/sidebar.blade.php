@@ -364,7 +364,7 @@
                 <a href="{{ url('/view/all/product-supplier') }}">
                     View All Product Suppliers
                     <span style="color:lightgreen" title="Total Product Suppliers">
-                        ({{DB::table('product_suppliers')->where('status', 'active')->count()}})
+                        ({{DB::table('product_suppliers')->count()}})
                     </span>
                 </a>
             </li>

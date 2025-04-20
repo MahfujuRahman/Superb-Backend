@@ -77,8 +77,7 @@ class CustomerSourceController extends Controller
     {   
         
         if ($request->ajax()) {
-            $data = CustomerSourceType::where('status', 'active')  // Filter active records
-                ->orderBy('id', 'desc')  // Order by ID in descending order
+            $data = CustomerSourceType::orderBy('id', 'desc')  // Order by ID in descending order
                 ->get();
 
 
@@ -173,9 +172,9 @@ class CustomerSourceController extends Controller
         //     }
         // }
 
-        // $data->delete();
-        $data->status = 'inactive';
-        $data->save();
+        $data->delete();
+        // $data->status = 'inactive';
+        // $data->save();
         return response()->json([
             'success' => 'Deleted successfully!',
             'data' => 1

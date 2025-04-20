@@ -84,8 +84,7 @@ class CustomerContactHistoryController extends Controller
     {
         
         if ($request->ajax()) {
-            $data = CustomerContactHistory::where('status', 'active')
-                                    ->with(['customer', 'employee'])
+            $data = CustomerContactHistory::with(['customer', 'employee'])
                                     ->orderBy('id', 'DESC')
                                     ->get();
             // dd($data->toArray());
@@ -225,9 +224,9 @@ class CustomerContactHistoryController extends Controller
     {
         $data = CustomerContactHistory::where('slug', $slug)->first();
 
-        // $data->delete();
-        $data->status = 'inactive';
-        $data->save();
+        $data->delete();
+        // $data->status = 'inactive';
+        // $data->save();
         return response()->json([
             'success' => 'Deleted successfully!',
             'data' => 1
