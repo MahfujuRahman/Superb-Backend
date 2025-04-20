@@ -46,7 +46,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="colFormLabel" class="col-sm-2 col-form-label">Category Banner</label>
+                            <label for="colFormLabel" class="col-sm-2 col-form-label">Category Banner (1620 × 375 px)</label>
                             <div class="col-sm-10">
                                 <input type="file" name="banner_image" class="dropify" data-height="200" data-max-file-size="1M" accept="image/*"/>
                             </div>
