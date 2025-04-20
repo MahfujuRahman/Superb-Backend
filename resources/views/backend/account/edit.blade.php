@@ -35,7 +35,7 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <h4 class="card-title mb-3">Update Form</h4>
-                        <a href="{{ route('ViewAllPaymentType')}}" class="btn btn-secondary">
+                        <a href="{{ route('ViewAllAcAccount')}}" class="btn btn-secondary">
                             <i class="fas fa-arrow-left"></i>
                         </a>
                     </div>
