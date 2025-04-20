@@ -239,11 +239,7 @@ class ProductController extends Controller
                             return $data->image;
                     })
                     ->editColumn('status', function($data) {
-                        if($data->status == 1){
-                            return '<span class="btn btn-sm btn-success d-inline-block">Active</span>';
-                        } else {
-                            return '<span class="btn btn-sm btn-danger d-inline-block">Inactive</span>';
-                        }
+                        return $data->status;
                     })
                     ->editColumn('price', function($data) {                        
                         return $data->price;

@@ -135,11 +135,31 @@
                 },
                 {
                     data: 'stock',
-                    name: 'stock'
+                    name: 'stock',
+                    render: function(data, type, full, meta) {
+                        if (data <= 10) {
+                            if (!full.alertShown && full.status == 1) {
+                                alert('Low stock for product: ' + full.name + '. Only ' + data + ' left. Add Stock immediately.' );
+                                full.alertShown = true;
+                            }
+                            return '<span style="color: red;">' + data + '</span>';
+                        }
+                        return data;
+                    }
                 },
                 {data: 'unit_name', name: 'unit_name'},
                 {data: 'flag_name', name: 'flag_name'},
-                {data: 'status', name: 'status'},
+                {
+                    data: 'status', 
+                    name: 'status',
+                    render: function(data, type, full, meta) {
+                        if(data == 1){
+                            return '<span class="btn btn-sm btn-success d-inline-block">Active</span>';
+                        } else {
+                            return '<span class="btn btn-sm btn-danger d-inline-block">Inactive</span>';
+                        }
+                    }
+                },
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ],
         });
