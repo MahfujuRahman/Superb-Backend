@@ -229,7 +229,7 @@
 
 
                         <div class="form-group text-center pt-3">
-                            <a href="{{url('view/all/blogs')}}" style="width: 130px;" class="btn btn-danger d-inline-block text-white m-2" type="submit"><i class="mdi mdi-cancel"></i> Cancel</a>
+                            <a href="{{url('view/all/outlet')}}" style="width: 130px;" class="btn btn-danger d-inline-block text-white m-2" type="submit"><i class="mdi mdi-cancel"></i> Cancel</a>
                             <button class="btn btn-primary m-2" style="width: 130px;" type="submit"><i class="fas fa-save"></i> Update</button>
                         </div>
 

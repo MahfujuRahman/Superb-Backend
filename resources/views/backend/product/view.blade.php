@@ -138,11 +138,13 @@
                     name: 'stock',
                     render: function(data, type, full, meta) {
                         if (data <= 10) {
-                            if (!full.alertShown && full.status == 1) {
-                                alert('Low stock for product: ' + full.name + '. Only ' + data + ' left. Add Stock immediately.' );
-                                full.alertShown = true;
-                            }
-                            return '<span style="color: red;">' + data + '</span>';
+                            // if (!full.alertShown && full.status == 1) {
+                            //     alert('Low stock for product: ' + full.name + '. Only ' + data + ' left. Add Stock immediately.' );
+                            //     full.alertShown = true;
+                            // }
+                            return '<span style="color: red; font-weight: bold;" title="Low Stock: Consider Restocking">' +
+                                   '<i class="fas fa-exclamation-triangle"></i> ' + data + 
+                                   '</span>';
                         }
                         return data;
                     }
