@@ -40,29 +40,29 @@
             <li><a href="{{ url('/config/setup') }}">Setup Your Config</a></li>
 
             {{-- Fshion Insdustry --}}
-            @if(DB::table('config_setups')->where('code', 'product_size')->where('status', 1)->first())
+            @if(DB::table('config_setups')->where('code', 'product_size')->first())
             <li><a href="{{ url('/view/all/sizes') }}">Product Sizes</a></li>
             @endif
 
             {{-- tech industry --}}
-            @if(DB::table('config_setups')->where('code', 'storage')->where('status', 1)->first())
+            @if(DB::table('config_setups')->where('code', 'storage')->first())
             <li><a href="{{ url('/view/all/storages') }}">Storage</a></li>
             @endif
-            @if(DB::table('config_setups')->where('code', 'sim')->where('status', 1)->first())
+            @if(DB::table('config_setups')->where('code', 'sim')->first())
             <li><a href="{{ url('/view/all/sims') }}">SIM Type</a></li>
             @endif
-            @if(DB::table('config_setups')->where('code', 'device_condition')->where('status', 1)->first())
+            @if(DB::table('config_setups')->where('code', 'device_condition')->first())
             <li><a href="{{ url('/view/all/device/conditions') }}">Device Condition</a></li>
             @endif
-            @if(DB::table('config_setups')->where('code', 'product_warranty')->where('status', 1)->first())
+            @if(DB::table('config_setups')->where('code', 'product_warranty')->first())
             <li><a href="{{ url('/view/all/warrenties') }}">Product Warrenty</a></li>
             @endif
 
             {{-- common --}}
-            @if(DB::table('config_setups')->where('code', 'color')->where('status', 1)->first())
+            @if(DB::table('config_setups')->where('code', 'color')->first())
             <li><a href="{{ url('/view/all/colors') }}">Product Colors</a></li>
             @endif
-            @if(DB::table('config_setups')->where('code', 'measurement_unit')->where('status', 1)->first())
+            @if(DB::table('config_setups')->where('code', 'measurement_unit')->first())
             <li><a href="{{ url('/view/all/units') }}">Measurement Units</a></li>
             @endif
 
@@ -84,7 +84,7 @@
                         <a href="{{ url('/view/all/customer-source') }}">
                             All Source Types
                             <span style="color:lightgreen" title="Total CS Types">
-                                ({{DB::table('customer_source_types')->where('status', 'active')->count()}})
+                                ({{DB::table('customer_source_types')->count()}})
                             </span>
                         </a>
                     </li>
@@ -99,7 +99,7 @@
                         <a href="{{ url('/view/all/customer-category') }}">
                             All Categories
                             <span style="color:lightgreen" title="Total Categories">
-                                ({{DB::table('customer_categories')->where('status', 'active')->count()}})
+                                ({{DB::table('customer_categories')->count()}})
                             </span>
                         </a>
                     </li>
@@ -113,7 +113,7 @@
                         <a href="{{ url('/view/all/customer') }}">
                             All Customers
                             <span style="color:lightgreen" title="Total Customers">
-                                ({{DB::table('customers')->where('status', 'active')->count()}})
+                                ({{DB::table('customers')->count()}})
                             </span>
                         </a>
                     </li>
@@ -127,7 +127,7 @@
                         <a href="{{ route('ViewAllCustomerContactHistories') }}">
                             All Contacts
                             <span style="color:lightgreen" title="Total Contact Histories">
-                                ({{DB::table('customer_contact_histories')->where('status', 'active')->count()}})
+                                ({{DB::table('customer_contact_histories')->count()}})
                             </span>
                         </a>
                     </li>
@@ -141,7 +141,7 @@
                         <a href="{{ url('/view/all/customer-next-contact-date') }}">
                             All Next Contacts
                             <span style="color:lightgreen" title="Total Contact Histories">
-                                ({{DB::table('customer_next_contact_dates')->where('status', 'active')->count()}})
+                                ({{DB::table('customer_next_contact_dates')->count()}})
                             </span>
                         </a>
                     </li>
@@ -161,7 +161,7 @@
                         <a href="{{ url('/view/all/payment-type') }}">
                             All Payment Types
                             <span style="color:lightgreen" title="Total CS Types">
-                                ({{DB::table('db_paymenttypes')->where('status', 'active')->count()}})
+                                ({{DB::table('db_paymenttypes')->count()}})
                             </span>
                         </a>
                     </li>
@@ -176,7 +176,7 @@
                         <a href="{{ url('/view/all/expense-category') }}">
                             All Categories
                             <span style="color:lightgreen" title="Total Categories">
-                                ({{DB::table('db_expense_categories')->where('status', 'active')->count()}})
+                                ({{DB::table('db_expense_categories')->count()}})
                             </span>
                         </a>
                     </li>
@@ -190,7 +190,7 @@
                         <a href="{{ url('/view/all/ac-account') }}">
                             All Accounts
                             <span style="color:lightgreen" title="Total Accounts">
-                                ({{DB::table('ac_accounts')->where('status', 'active')->count()}})
+                                ({{DB::table('ac_accounts')->count()}})
                             </span>
                         </a>
                     </li>
@@ -204,7 +204,7 @@
                         <a href="{{ route('ViewAllExpense') }}">
                             All Expenses
                             <span style="color:lightgreen" title="Total Expenses">
-                                ({{DB::table('db_expenses')->where('status', 'active')->count()}})
+                                ({{DB::table('db_expenses')->count()}})
                             </span>
                         </a>
                     </li>
@@ -218,7 +218,7 @@
                         <a href="{{ route('ViewAllDeposit') }}">
                             All Deposits
                             <span style="color:lightgreen" title="Total Deposits">
-                                ({{DB::table('ac_transactions')->where('status', 'active')->count()}})
+                                ({{DB::table('ac_transactions')->count()}})
                             </span>
                         </a>
                     </li>
@@ -282,7 +282,7 @@
                 <a href="{{ url('/view/all/product') }}">
                     View All Products
                     <span style="color:lightgreen" title="Total Products">
-                        ({{DB::table('products')->where('status', 1)->count()}})
+                        ({{DB::table('products')->count()}})
                     </span>
                 </a>
             </li>
@@ -321,7 +321,7 @@
                 <a href="{{ url('/view/all/product-warehouse') }}">
                     View All Warehouses
                     <span style="color:lightgreen" title="Total Product Warehouses">
-                        ({{DB::table('product_warehouses')->where('status', 'active')->count()}})
+                        ({{DB::table('product_warehouses')->count()}})
                     </span>
                 </a>
             </li>
@@ -336,7 +336,7 @@
                 <a href="{{ url('/view/all/product-warehouse-room') }}">
                     View All Warehouse Rooms
                     <span style="color:lightgreen" title="Total Product Warehouse Rooms">
-                        ({{DB::table('product_warehouse_rooms')->where('status', 'active')->count()}})
+                        ({{DB::table('product_warehouse_rooms')->count()}})
                     </span>
                 </a>
             </li>
@@ -350,7 +350,7 @@
                 <a href="{{ url('/view/all/product-warehouse-room-cartoon') }}">
                     View All Warehouse Room Cartoons
                     <span style="color:lightgreen" title="Total Product Warehouse Room cartoons">
-                        ({{DB::table('product_warehouse_room_cartoons')->where('status', 'active')->count()}})
+                        ({{DB::table('product_warehouse_room_cartoons')->count()}})
                     </span>
                 </a>
             </li>
@@ -379,7 +379,7 @@
                 <a href="{{ url('/view/all/purchase-product/quotation') }}">
                     View All Quotations
                     <span style="color:lightgreen" title="Total Product Purchase Quotations">
-                        ({{DB::table('product_purchase_quotations')->where('status', 1)->count()}})
+                        ({{DB::table('product_purchase_quotations')->count()}})
                     </span>
                 </a>
             </li>
@@ -390,7 +390,7 @@
                 <a href="{{ url('/view/all/purchase-product/order') }}">
                     View All Orders
                     <span style="color:lightgreen" title="Total Product Purchase Orders">
-                        ({{DB::table('product_purchase_orders')->where('status', 1)->count()}})
+                        ({{DB::table('product_purchase_orders')->count()}})
                     </span>
                 </a>
             </li>
@@ -405,7 +405,7 @@
                 <a href="{{ url('/view/all/purchase-product/order') }}">
                     View All Orders
                     <span style="color:lightgreen" title="Total Product Purchase Orders">
-                        ({{DB::table('product_purchase_orders')->where('status', 1)->count()}})
+                        ({{DB::table('product_purchase_orders')->count()}})
                     </span>
                 </a>
             </li>
@@ -465,7 +465,7 @@
                 <a href="{{ url('/view/all/product-purchase/quotation') }}">
                     All Quotations
                     <span style="color:lightgreen" title="Total Product Quotations">
-                        ({{DB::table('product_purchase_quotations')->where('status', 1)->count()}})
+                        ({{DB::table('product_purchase_quotations')->count()}})
                     </span>
                 </a>
             </li>
@@ -474,7 +474,7 @@
                 <a href="{{ url('/view/all/product-purchase/order') }}">
                     All Orders
                     <span style="color:lightgreen" title="Total Product Orders">
-                        ({{DB::table('product_purchase_orders')->where('status', 1)->count()}})
+                        ({{DB::table('product_purchase_orders')->count()}})
                     </span>
                 </a>
             </li>
@@ -523,7 +523,7 @@
                 <a href="{{ url('/view/all/customer-source') }}">
                     View All CS Types
                     <span style="color:lightgreen" title="Total CS Types">
-                        ({{DB::table('customer_source_types')->where('status', 'active')->count()}})
+                        ({{DB::table('customer_source_types')->count()}})
                     </span>
                 </a>
             </li>
@@ -538,7 +538,7 @@
                 <a href="{{ url('/view/all/supplier-source') }}">
                     View All Supplier Types
                     <span style="color:lightgreen" title="Total CS Types">
-                        ({{DB::table('supplier_source_types')->where('status', 'active')->count()}})
+                        ({{DB::table('supplier_source_types')->count()}})
                     </span>
                 </a>
             </li>
@@ -553,7 +553,7 @@
                 <a href="{{ url('/view/all/outlet') }}">
                     View All Outlets
                     <span style="color:lightgreen" title="Total Outlets">
-                        ({{DB::table('outlets')->where('status', 'active')->count()}})
+                        ({{DB::table('outlets')->count()}})
                     </span>
                 </a>
             </li>
@@ -568,7 +568,7 @@
                 <a href="{{ url('/view/all/video-gallery') }}">
                     View All Videos
                     <span style="color:lightgreen" title="Total Videos">
-                        ({{DB::table('video_galleries')->where('status', 'active')->count()}})
+                        ({{DB::table('video_galleries')->count()}})
                     </span>
                 </a>
             </li>
