@@ -47,7 +47,7 @@
                                 <div class="row">
                                     <div class="col-lg-3">
                                         <div class="form-group">
-                                            <label for="image">Cover Image <span class="text-danger">*</span></label>
+                                            <label for="image">Cover Image (1112px X 400px) *<span class="text-danger">*</span></label>
                                             <input type="file" name="image" class="dropify" data-height="200" data-max-file-size="1M" accept="image/*"/>
                                         </div>
                                     </div>
