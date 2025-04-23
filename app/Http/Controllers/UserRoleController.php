@@ -161,6 +161,17 @@ class UserRoleController extends Controller
         if(isset($request->permission_id) && count($request->permission_id) > 0){
             foreach($request->permission_id as $permissionId){
                 $routeInfo = PermissionRoutes::where('id', $permissionId)->first();
+
+                // Check if the permission is already assigned to the user
+                $existingPermission = UserRolePermission::where('user_id', $request->user_id)
+                    ->where('permission_id', $permissionId)
+                    ->first();
+
+                if ($existingPermission) {
+                    // If the permission already exists, skip inserting it again
+                    continue;
+                }
+
                 UserRolePermission::insert([
                     'user_id' => $request->user_id,
                     'role_id' => null,

@@ -105,6 +105,7 @@
     <hr style="border-color: #c8c8c836; margin-top: 12px; margin-bottom: 5px;">
     <li class="menu-title" style="color: khaki; text-shadow: 1px 1px 2px black;">Website Config</li>
     @endif
+    @dd(checkAuth("general/info"))
     @if(checkAuth("general/info")) <li><a href="{{ url('/general/info') }}"><i class="feather-grid"></i><span>General Info</span></a></li> @endif
     @if(checkAuth("website/theme/page")) <li><a href="{{ url('/website/theme/page') }}"><i class="mdi mdi-format-color-fill" style="font-size: 18px"></i><span>Website Theme Color</span></a></li> @endif
     @if(checkAuth("social/media/page")) <li><a href="{{ url('/social/media/page') }}"><i class="mdi mdi-link-variant" style="font-size: 17px"></i><span>Social Media Links</span></a></li> @endif
