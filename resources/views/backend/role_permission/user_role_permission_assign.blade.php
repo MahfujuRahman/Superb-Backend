@@ -70,6 +70,12 @@
                             <div class="row">
                                 <div class="col-lg-4 border-right">
                                     @foreach ($permissionRoutes1 as $permissionRoute)
+
+                                    @if($permissionRoute->route == 'home')
+                                        <input type="checkbox" checked hidden id="per{{$permissionRoute->id}}" value="{{$permissionRoute->id}}" name="permission_id[]"/>
+                                    @continue
+                                    @endif
+                                    
                                     <div class="form-group border-bottom" style="margin-bottom: .3rem;">
                                         <table>
                                             <tr>

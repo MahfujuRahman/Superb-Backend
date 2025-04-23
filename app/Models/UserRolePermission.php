@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class UserRolePermission extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
 }

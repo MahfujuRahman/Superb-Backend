@@ -63,11 +63,17 @@
                             <div class="row">
                                 <div class="col-lg-4 border-right">
                                     @foreach ($permissionRoutes1 as $permissionRoute)
+
+                                    @if($permissionRoute->route == 'home')
+                                        <input type="checkbox" checked hidden id="per{{$permissionRoute->id}}" value="{{$permissionRoute->id}}" name="permission_id[]"/>
+                                    @continue
+                                    @endif
+
                                     <div class="form-group border-bottom" style="margin-bottom: .3rem;">
                                         <table>
                                             <tr>
                                                 <td style="padding-right: 10px; vertical-align: middle;">
-                                                    <input type="checkbox" @if($permissionRoute->route == 'home' || App\Models\RolePermission::where('role_id', $userRoleInfo->id)->where('permission_id', $permissionRoute->id)->exists()) checked @endif data-size="small" id="per{{$permissionRoute->id}}" value="{{$permissionRoute->id}}" name="permission_id[]" data-toggle="switchery" data-color="#08da82" data-secondary-color="#df3554"/>
+                                                    <input type="checkbox" @if(App\Models\RolePermission::where('role_id', $userRoleInfo->id)->where('permission_id', $permissionRoute->id)->exists()) checked @endif data-size="small" id="per{{$permissionRoute->id}}" value="{{$permissionRoute->id}}" name="permission_id[]" data-toggle="switchery" data-color="#08da82" data-secondary-color="#df3554"/>
                                                 </td>
                                                 <td style="padding-top: 5px; vertical-align: middle;">
                                                     <label for="per{{$permissionRoute->id}}" style="cursor: pointer">
