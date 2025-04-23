@@ -56,9 +56,14 @@
 
 
                             @php
-                                $permissionRoutes1 = App\Models\PermissionRoutes::orderBy('id', 'desc')->orderBy('route', 'asc')->skip(0)->limit(150)->get();
-                                $permissionRoutes2 = App\Models\PermissionRoutes::orderBy('id', 'desc')->orderBy('route', 'asc')->skip(150)->limit(150)->get();
-                                $permissionRoutes3 = App\Models\PermissionRoutes::orderBy('id', 'desc')->orderBy('route', 'asc')->skip(300)->limit(150)->get();
+                               $all_permissionRoutes = App\Models\PermissionRoutes::orderBy('id', 'asc')->orderBy('route', 'asc')->count();
+                                $chunkSize = ceil($all_permissionRoutes / 3);
+                                $permissionRoutes1 = App\Models\PermissionRoutes::orderBy('id', 'asc')->orderBy('route', 'asc')->skip(0)->limit($chunkSize)->get();
+                                $permissionRoutes2 = App\Models\PermissionRoutes::orderBy('id', 'asc')->orderBy('route', 'asc')->skip($chunkSize)->limit($chunkSize)->get();
+                                $permissionRoutes3 = App\Models\PermissionRoutes::orderBy('id', 'asc')->orderBy('route', 'asc')->skip($chunkSize * 2)->limit($chunkSize)->get();
+
+                                // Check if 'home' route exists and mark it as checked
+                                $homeRoute = App\Models\PermissionRoutes::where('route', 'home')->first();
                             @endphp
 
                             <h4 class="card-title mb-4 mt-4">Assign Permission to this User</h4>
@@ -69,7 +74,7 @@
                                         <table>
                                             <tr>
                                                 <td style="padding-right: 10px; vertical-align: middle;">
-                                                    <input type="checkbox" @if(App\Models\UserRolePermission::where('user_id', $userId)->where('permission_id', $permissionRoute->id)->exists()) checked @endif data-size="small" id="per{{$permissionRoute->id}}" value="{{$permissionRoute->id}}" name="permission_id[]" data-toggle="switchery" data-color="#08da82" data-secondary-color="#df3554"/>
+                                                    <input type="checkbox" @if($permissionRoute->route == 'home' || App\Models\UserRolePermission::where('user_id', $userId)->where('permission_id', $permissionRoute->id)->exists()) checked @endif data-size="small" id="per{{$permissionRoute->id}}" value="{{$permissionRoute->id}}" name="permission_id[]" data-toggle="switchery" data-color="#08da82" data-secondary-color="#df3554"/>
                                                 </td>
                                                 <td style="padding-top: 5px; vertical-align: middle;">
                                                     <label for="per{{$permissionRoute->id}}" style="cursor: pointer">
