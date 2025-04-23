@@ -100,6 +100,8 @@ class ProductController extends Controller
         $product->fabrication_gsm_ounce = $request->fabrication_gsm_ounce;
         $product->contact_number = $request->contact_number;
 
+        $product->low_stock = $request->low_stock;
+        
         $product->brand_id = $request->brand_id;
         $product->model_id = $request->model_id;
         $product->code = $request->code;
@@ -424,6 +426,8 @@ class ProductController extends Controller
         $product->fabrication_gsm_ounce = $request->fabrication_gsm_ounce ?? $product->fabrication_gsm_ounce;
         $product->contact_number = $request->contact_number ?? $product->contact_number;
 
+
+        $product->low_stock = $request->low_stock;
 
         $product->brand_id = $request->brand_id;
         $product->model_id = $request->model_id;

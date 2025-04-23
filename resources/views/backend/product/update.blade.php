@@ -223,6 +223,16 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="low_stock">Low Stock <span class="text-danger">*</span></label>
+                                    <input type="text" id="low_stock" name="low_stock" value="{{$product->low_stock}}" class="form-control" placeholder="Enter Low Stock Value. e.g. 10" required>
+                                    <div class="invalid-feedback" style="display: block;">
+                                        @error('low_stock')
+                                            {{ $message }}
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
                                     <label for="category_id">Category <span class="text-danger">*</span></label>
                                     <select name="category_id" data-toggle="select2" class="form-control" id="category_id" required>
                                         @php
