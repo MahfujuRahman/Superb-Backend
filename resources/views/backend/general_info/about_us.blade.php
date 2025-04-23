@@ -42,7 +42,7 @@
                         <div class="row">
                             <div class="col-lg-3">
                                 <div class="form-group">
-                                    <label for="banner_bg">Banner Background Image <span class="text-danger">*</span></label>
+                                    <label for="banner_bg">Banner Background Image (1112px X 400px) <span class="text-danger">*</span></label>
                                     <input type="file" name="banner_bg" class="dropify" data-height="203" data-max-file-size="1M" accept="image/*"/>
                                 </div>
                                 <div class="form-group">
