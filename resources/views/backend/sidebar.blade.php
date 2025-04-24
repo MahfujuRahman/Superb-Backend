@@ -134,6 +134,20 @@
                 </ul>
             </li>
             <li>
+                <a href="javascript: void(0);" class="has-arrow"><i class="feather-box"></i><span>Ecom Customer</span></a>
+                <ul class="sub-menu" aria-expanded="false">
+                    <li><a href="{{ url('/add/new/customer-ecommerce') }}">Add Customer</a></li>
+                    <li>
+                        <a href="{{ route('ViewAllCustomerEcommerce') }}">
+                            All Customer
+                            <span style="color:lightgreen" title="Total Contact Histories">
+                                ({{DB::table('users')->where('user_type', 3)->count()}})
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
                 <a href="javascript: void(0);" class="has-arrow"><i class="feather-box"></i><span>Next Date Contact</span></a>
                 <ul class="sub-menu" aria-expanded="false">
                     <li><a href="{{ url('/add/new/customer-next-contact-date') }}">Add Next Date</a></li>
