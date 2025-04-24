@@ -7,9 +7,12 @@ use Carbon\Carbon;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\EmailConfigure;
+use App\Mail\UserVerificationEmail;
 use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class CustomerEcommerceController extends Controller
 {
@@ -39,7 +42,7 @@ class CustomerEcommerceController extends Controller
             $image = "userProfileImages/" . $image_name;
         }
 
-        User::insert([
+        $data = User::insert([
             'name' => request()->name,
             'phone' => request()->phone,
             'email' => request()->email,
@@ -47,10 +50,33 @@ class CustomerEcommerceController extends Controller
             'password' => \Illuminate\Support\Facades\Hash::make(request()->password),
             'image' => $image ?? null,
             'user_type' => 3,
+            'verification_code' => Str::random(6),
 
             'status' => 1,
             'created_at' => Carbon::now()
         ]);
+
+        // try {
+        // $emailConfig = EmailConfigure::where('status', 1)->orderBy('id', 'desc')->first();
+        // $userEmail = request()->email;
+
+        // if ($emailConfig && $userEmail) {
+        //     if ($emailConfig) {
+        //         config([
+        //             'mail.mailers.smtp.host' => $emailConfig->host,
+        //             'mail.mailers.smtp.port' => $emailConfig->port,
+        //             'mail.mailers.smtp.username' => $emailConfig->email,
+        //             'mail.mailers.smtp.password' => $emailConfig->password,
+        //             'mail.mailers.smtp.encryption' => $emailConfig ? ($emailConfig->encryption == 1 ? 'tls' : ($emailConfig->encryption == 2 ? 'ssl' : '')) : '',
+        //         ]);
+
+        //         Mail::to(trim($userEmail))->send(new UserVerificationEmail($data));
+        //     }
+        // }
+
+        // } catch(\Exception $e) {
+        //     // write code for handling error from here
+        // }
 
         Toastr::success('Added successfully!', 'Success');
         return back();
@@ -149,6 +175,42 @@ class CustomerEcommerceController extends Controller
 
         $data = $user;
 
+        // $emailConfig = EmailConfigure::where('status', 1)->orderBy('id', 'desc')->first();
+
+        // if (!$emailConfig) {
+        //     return response()->json(['error' => 'No active email configuration found.']);
+        // }
+
+        // $userEmail = trim(request()->email);
+
+        // if (!$userEmail) {
+        //     return response()->json(['error' => 'No email provided.']);
+        // }
+
+        // // Set mail config dynamically
+        // config([
+        //     'mail.default' => 'smtp',
+        //     'mail.mailers.smtp.transport' => 'smtp',
+        //     'mail.mailers.smtp.host' => trim($emailConfig->host), // e.g., smtp.gmail.com
+        //     'mail.mailers.smtp.port' => $emailConfig->port,
+        //     'mail.mailers.smtp.username' => $emailConfig->email,
+        //     'mail.mailers.smtp.password' => $emailConfig->password,
+        //     'mail.mailers.smtp.encryption' => $emailConfig->encryption == 1 ? 'tls' : ($emailConfig->encryption == 2 ? 'ssl' : null),
+        //     'mail.from.address' => $emailConfig->email,
+        //     'mail.from.name' => $emailConfig->mail_from_name,
+        // ]);
+
+        // // Optional: Debug log what config is being used
+        // logger('Mail config:', config('mail.mailers.smtp'));
+
+        // try {
+        //     $data = ['verification_code' => rand(100000, 999999)];
+        //     Mail::to($userEmail)->send(new UserVerificationEmail($data));
+        //     return response()->json(['success' => '✅ Email sent!']);
+        // } catch (\Exception $e) {
+        //     return response()->json(['error' => '❌ Mail error: ' . $e->getMessage()]);
+        // }
+
         Toastr::success('Updated Successfully', 'Success!');
         return view('backend.customer_ecommerce.edit', compact('data'));
     }
@@ -163,7 +225,7 @@ class CustomerEcommerceController extends Controller
         }
 
         $data->delete();
-        
+
         return response()->json([
             'success' => 'Deleted successfully!',
             'data' => 1

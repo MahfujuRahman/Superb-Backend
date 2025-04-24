@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml"
     xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -45,9 +45,23 @@
 
     We just need to verify your email address before you can access GenericCommerceV1. <br><br>
 
-    Your Verification Code is : <?= $sendLinkInfo['code'] ?> <br><br>
+    Your Verification Code is : {{ $sendLinkInfo['verification_code'] }} <br><br>
 
     Thanks! - The GenericCommerceV1 team
 </body>
 
+</html> --}}
+
+
+<!-- resources/views/emails/sample.blade.php -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ $subject }}</title>
+</head>
+<body>
+    <h1>Hello, {{ $name }}</h1>
+    <p>This is a test email sent from Laravel 8.</p>
+</body>
 </html>

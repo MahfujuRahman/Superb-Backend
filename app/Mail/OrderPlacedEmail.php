@@ -21,6 +21,7 @@ class OrderPlacedEmail extends Mailable
     {
         $this->orderInfo = $data;
     }
+    
 
     /**
      * Build the message.

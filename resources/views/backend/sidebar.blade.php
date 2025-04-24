@@ -134,7 +134,7 @@
                 </ul>
             </li>
             <li>
-                <a href="javascript: void(0);" class="has-arrow"><i class="feather-box"></i><span>Ecom Customer</span></a>
+                <a href="javascript: void(0);" class="has-arrow"><i class="feather-box"></i><span>E-Customer</span></a>
                 <ul class="sub-menu" aria-expanded="false">
                     <li><a href="{{ url('/add/new/customer-ecommerce') }}">Add Customer</a></li>
                     <li>
