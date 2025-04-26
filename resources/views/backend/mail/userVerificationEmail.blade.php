@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="x-apple-disable-message-reformatting">
     <meta http-equiv="Content-Type" content="text/html charset=UTF-8" />
-    <title>Email Verification - GenericCommerceV1</title>
+    <title>Email Verification - TPMART</title>
     <style>
         body {
             font-family: Arial, sans-serif;

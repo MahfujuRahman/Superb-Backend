@@ -742,6 +742,7 @@ class ProductController extends Controller
     public function submitAnswerOfQuestion(Request $request){
         ProductQuestionAnswer::where('id', $request->question_answer_id)->update([
             'answer' => $request->answer,
+            'status' => 1,
             'updated_at' => Carbon::now()
         ]);
         return response()->json(['success' => 'Replied Successfully.']);
