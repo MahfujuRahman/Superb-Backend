@@ -42,7 +42,7 @@ class CustomerEcommerceController extends Controller
             $image = "userProfileImages/" . $image_name;
         }
 
-        $data = User::insert([
+        $data = User::create([
             'name' => request()->name,
             'phone' => request()->phone,
             'email' => request()->email,
@@ -83,7 +83,7 @@ class CustomerEcommerceController extends Controller
         try {
             Mail::to($userEmail)->send(new UserVerificationEmail($data));
         } catch (\Exception $e) {
-            return response()->json(['error' => '❌ Mail error: ' . $e->getMessage()]);
+            Toastr::error($e->getMessage(), '❌ Mail error');
         }
 
         Toastr::success('Added successfully!', 'Success');
@@ -181,7 +181,7 @@ class CustomerEcommerceController extends Controller
             'updated_at' => Carbon::now()
         ]);
 
-        // $data = $user;
+        $data = $user;
    
         // $emailConfig = EmailConfigure::where('status', 1)->orderBy('id', 'desc')->first();
 

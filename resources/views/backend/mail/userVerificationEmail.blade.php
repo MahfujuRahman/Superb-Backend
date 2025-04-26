@@ -45,7 +45,7 @@
             color: #00788a;
             padding: 12px 20px;
             margin: 20px 0;
-            display: inline-block;
+            display: block;
             letter-spacing: 4px;
             border-radius: 6px;
         }
@@ -64,7 +64,7 @@
         <div class="content">
             Hi {{ $sendLinkInfo['name'] ?? 'User' }}, <br><br>
 
-            Thank you for registering with <strong>GenericCommerceV1</strong>!<br>
+            Thank you for registering with <strong>TPMART</strong>!<br>
             Please use the following verification code to complete your signup process:
 
             <div class="verification-code">
@@ -74,10 +74,10 @@
             If you didn’t request this, you can safely ignore this email.<br><br>
 
             Thanks & regards,<br>
-            <strong>GenericCommerceV1 Team</strong>
+            <strong>TPMART Team</strong>
         </div>
         <div class="footer">
-            &copy; {{ date('Y') }} GenericCommerceV1. All rights reserved.
+            &copy; {{ date('Y') }} TPMART. All rights reserved.
         </div>
     </div>
 </body>

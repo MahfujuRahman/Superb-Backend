@@ -126,4 +126,5 @@
              $("span.dropify-render").eq(0).html("<img src='{{url($data->image)}}'>");
          @endif
      </script>
+    
 @endsection

@@ -17,19 +17,22 @@
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4 class="card-title mb-3">Customer E-commerce Create Form</h4>
+                        <h4 class="card-title mb-3">Customer E-commerce Create Form</h4>
                         <a href="{{ route('ViewAllCustomerEcommerce')}}" class="btn btn-secondary">
                             <i class="fas fa-arrow-left"></i>
                         </a>
                     </div>
 
-                    <form class="needs-validation" method="POST" action="{{url('/save/new/customer-ecommerce')}}" enctype="multipart/form-data">
+                    <form class="needs-validation" method="POST" action="{{url('/save/new/customer-ecommerce')}}"
+                        enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group row">
-                            <label for="colFormLabel" class="col-sm-2 col-form-label">Name <span class="text-danger">*</span></label>
+                            <label for="colFormLabel" class="col-sm-2 col-form-label">Name <span
+                                    class="text-danger">*</span></label>
                             <div class="col-sm-10">
-                                <input type="text" name="name" class="form-control" id="colFormLabel" placeholder="Full Name" required>
+                                <input type="text" name="name" class="form-control" id="colFormLabel"
+                                    placeholder="Full Name" required>
                                 <div class="invalid-feedback" style="display: block;">
                                     @error('name')
                                         {{ $message }}
@@ -41,7 +44,8 @@
                         <div class="form-group row">
                             <label for="colFormLabel" class="col-sm-2 col-form-label">Image</label>
                             <div class="col-sm-10">
-                                <input type="file" name="image" class="dropify" data-height="100" data-max-file-size="1M" accept="image/*"/>
+                                <input type="file" name="image" class="dropify" data-height="100" data-max-file-size="1M"
+                                    accept="image/*" />
                                 <div class="invalid-feedback" style="display: block;">
                                     @error('image')
                                         {{ $message }}
@@ -51,9 +55,11 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="colFormLabel" class="col-sm-2 col-form-label">Phone <span class="text-danger">*</span></label>
+                            <label for="colFormLabel" class="col-sm-2 col-form-label">Phone <span
+                                    class="text-danger">*</span></label>
                             <div class="col-sm-10">
-                                <input type="text" name="phone" class="form-control" id="colFormLabel" placeholder="Enter your phone number" required>
+                                <input type="text" name="phone" class="form-control" id="colFormLabel"
+                                    placeholder="Enter your phone number" required>
                                 <div class="invalid-feedback" style="display: block;">
                                     @error('phone')
                                         {{ $message }}
@@ -63,9 +69,11 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="colFormLabel" class="col-sm-2 col-form-label">Email <span class="text-danger">*</span></label>
+                            <label for="colFormLabel" class="col-sm-2 col-form-label">Email <span
+                                    class="text-danger">*</span></label>
                             <div class="col-sm-10">
-                                <input type="email" name="email" class="form-control" id="colFormLabel" placeholder="Enter your email" required>
+                                <input type="email" name="email" class="form-control" id="colFormLabel"
+                                    placeholder="Enter your email" required>
                                 <div class="invalid-feedback" style="display: block;">
                                     @error('email')
                                         {{ $message }}
@@ -75,9 +83,11 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="colFormLabel" class="col-sm-2 col-form-label">Address <span class="text-danger">*</span></label>
+                            <label for="colFormLabel" class="col-sm-2 col-form-label">Address <span
+                                    class="text-danger">*</span></label>
                             <div class="col-sm-10">
-                                <input type="text" name="address" class="form-control" id="colFormLabel" placeholder="Enter Your address" required>
+                                <input type="text" name="address" class="form-control" id="colFormLabel"
+                                    placeholder="Enter Your address" required>
                                 <div class="invalid-feedback" style="display: block;">
                                     @error('address')
                                         {{ $message }}
@@ -87,9 +97,11 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="colFormLabel" class="col-sm-2 col-form-label">Password <span class="text-danger">*</span></label>
+                            <label for="colFormLabel" class="col-sm-2 col-form-label">Password <span
+                                    class="text-danger">*</span></label>
                             <div class="col-sm-10">
-                                <input type="password" name="password" class="form-control" id="colFormLabel" placeholder="Enter Your password" required>
+                                <input type="password" name="password" class="form-control" id="colFormLabel"
+                                    placeholder="Enter Your password" required>
                                 <div class="invalid-feedback" style="display: block;">
                                     @error('password')
                                         {{ $message }}
@@ -131,5 +143,20 @@
         //         URL.revokeObjectURL(output.src) // free memory
         //     }
         // };
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const forms = document.querySelectorAll('form');
+
+            forms.forEach(form => {
+                form.addEventListener('submit', function () {
+                    const submitBtn = form.querySelector('[type="submit"]');
+                    if (submitBtn) {
+                        submitBtn.disabled = true;
+                        submitBtn.innerText = 'Updating...';
+                    }
+                });
+            });
+        });
     </script>
 @endsection
