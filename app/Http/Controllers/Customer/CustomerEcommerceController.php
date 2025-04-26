@@ -55,28 +55,36 @@ class CustomerEcommerceController extends Controller
             'status' => 1,
             'created_at' => Carbon::now()
         ]);
+   
+        $emailConfig = EmailConfigure::where('status', 1)->orderBy('id', 'desc')->first();
 
-        // try {
-        // $emailConfig = EmailConfigure::where('status', 1)->orderBy('id', 'desc')->first();
-        // $userEmail = request()->email;
+        if (!$emailConfig) {
+            return response()->json(['error' => 'No active email configuration found.']);
+        }
 
-        // if ($emailConfig && $userEmail) {
-        //     if ($emailConfig) {
-        //         config([
-        //             'mail.mailers.smtp.host' => $emailConfig->host,
-        //             'mail.mailers.smtp.port' => $emailConfig->port,
-        //             'mail.mailers.smtp.username' => $emailConfig->email,
-        //             'mail.mailers.smtp.password' => $emailConfig->password,
-        //             'mail.mailers.smtp.encryption' => $emailConfig ? ($emailConfig->encryption == 1 ? 'tls' : ($emailConfig->encryption == 2 ? 'ssl' : '')) : '',
-        //         ]);
+        $userEmail = trim(request()->email);
 
-        //         Mail::to(trim($userEmail))->send(new UserVerificationEmail($data));
-        //     }
-        // }
+        if (!$userEmail) {
+            return response()->json(['error' => 'No email provided.']);
+        }
+        // Set mail config dynamically
+        config([
+            'mail.default' => 'smtp',
+            'mail.mailers.smtp.transport' => 'smtp',
+            'mail.mailers.smtp.host' => trim($emailConfig->host), // e.g., smtp.gmail.com
+            'mail.mailers.smtp.port' => $emailConfig->port,
+            'mail.mailers.smtp.username' => $emailConfig->email,
+            'mail.mailers.smtp.password' => $emailConfig->password,
+            'mail.mailers.smtp.encryption' => $emailConfig->encryption == 1 ? 'tls' : ($emailConfig->encryption == 2 ? 'ssl' : null),
+            'mail.from.address' => $emailConfig->email,
+            'mail.from.name' => $emailConfig->mail_from_name,
+        ]);
 
-        // } catch(\Exception $e) {
-        //     // write code for handling error from here
-        // }
+        try {
+            Mail::to($userEmail)->send(new UserVerificationEmail($data));
+        } catch (\Exception $e) {
+            return response()->json(['error' => '❌ Mail error: ' . $e->getMessage()]);
+        }
 
         Toastr::success('Added successfully!', 'Success');
         return back();
@@ -173,8 +181,8 @@ class CustomerEcommerceController extends Controller
             'updated_at' => Carbon::now()
         ]);
 
-        $data = $user;
-
+        // $data = $user;
+   
         // $emailConfig = EmailConfigure::where('status', 1)->orderBy('id', 'desc')->first();
 
         // if (!$emailConfig) {
@@ -186,7 +194,6 @@ class CustomerEcommerceController extends Controller
         // if (!$userEmail) {
         //     return response()->json(['error' => 'No email provided.']);
         // }
-
         // // Set mail config dynamically
         // config([
         //     'mail.default' => 'smtp',
@@ -200,11 +207,9 @@ class CustomerEcommerceController extends Controller
         //     'mail.from.name' => $emailConfig->mail_from_name,
         // ]);
 
-        // // Optional: Debug log what config is being used
-        // logger('Mail config:', config('mail.mailers.smtp'));
+        // // logger('Mail config:', config('mail.mailers.smtp'));
 
         // try {
-        //     $data = ['verification_code' => rand(100000, 999999)];
         //     Mail::to($userEmail)->send(new UserVerificationEmail($data));
         //     return response()->json(['success' => '✅ Email sent!']);
         // } catch (\Exception $e) {
