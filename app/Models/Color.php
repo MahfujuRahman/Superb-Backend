@@ -8,6 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Color extends Model
 {
     use HasFactory;
+    
+    protected $fillable = [
+        'name',
+        'code',
+        'created_at',
+        'updated_at'
+    ];
 
     public static function getDropDownList($fieldName, $id=NULL){
         $str = "<option value=''>Select One</option>";

@@ -291,6 +291,15 @@
     <li>
         <a href="javascript: void(0);" class="has-arrow"><i class="feather-box"></i><span>Manage Products</span></a>
         <ul class="sub-menu" aria-expanded="false">
+            <li><a href="{{ url('/add/new/product-color') }}">Add New Product Color</a></li>
+            <li>
+                <a href="{{ url('view/all/product-color') }}">
+                    View All Products Color
+                    <span style="color:lightgreen" title="Total Products">
+                        ({{DB::table('colors')->count()}})
+                    </span>
+                </a>
+            </li>
             <li><a href="{{ url('/add/new/product') }}">Add New Product</a></li>
             <li>
                 <a href="{{ url('/view/all/product') }}">

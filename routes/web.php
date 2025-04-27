@@ -31,6 +31,7 @@ use App\Http\Controllers\GeneralInfoController;
 use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\ProductColorController;
 use App\Http\Controllers\ChildCategoryController;
 use App\Http\Controllers\ContactRequestontroller;
 use App\Http\Controllers\Outlet\OutletController;
@@ -678,6 +679,18 @@ Route::group(['middleware' => ['auth', 'CheckUserType', 'DemoMode']], function (
     Route::get('/view/user/role/permission', [UserRoleController::class, 'viewUserRolePermission'])->name('ViewUserRolePermission');
     Route::get('/assign/role/permission/{id}', [UserRoleController::class, 'assignRolePermission'])->name('AssignRolePermission');
     Route::post('/save/assigned/role/permission', [UserRoleController::class, 'saveAssignedRolePermission'])->name('SaveAssignedRolePermission');
+
+
+      // Product Color Management
+      Route::get('/add/new/product-color', [ProductColorController::class, 'addNewProductColor'])->name('AddNewProductColor');    
+      Route::post('/save/new/product-color', [ProductColorController::class, 'saveNewProductColor'])->name('SaveNewProductColor');
+      Route::get('/view/all/product-color', [ProductColorController::class, 'viewAllProductColor'])->name('ViewAllProductColor');
+      Route::get('/delete/product-color/{slug}', [ProductColorController::class, 'deleteProductColor'])->name('DeleteProductColor');
+      Route::get('/edit/product-color/{slug}', [ProductColorController::class, 'editProductColor'])->name('EditProductColor');      
+      Route::post('/update/product-color', [ProductColorController::class, 'updateProductColor'])->name('UpdateProductColor');
+  
+
+
 
     // // vendor routes
     // Route::get('/create/new/vendor', [VendorController::class, 'createNewVendor'])->name('CreateNewVendor');
