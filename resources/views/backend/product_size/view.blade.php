@@ -62,10 +62,10 @@
 @endsection
 
 @section('page_title')
-    Product Size
+    Attribute
 @endsection
 @section('page_heading')
-    View All Product Size
+    View All Attribute
 @endsection
 
 @section('content')
@@ -73,7 +73,7 @@
         <div class="col-lg-12 col-xl-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title mb-3">View All Product Size</h4>
+                    <h4 class="card-title mb-3">View All Attribute</h4>
                     <div class="table-responsive">
 
                         <table class="table table-bordered mb-0 data-table">
@@ -122,6 +122,13 @@
                     searchable: false
                 },
             ],
+            dom: 'lfrtip',
+            initComplete: function() {
+                // Append the Rearrange Category button to the search input area
+                var searchBox = this.api().table().container().querySelector('.dataTables_filter');
+                var rearrangeButton = $('<a href="{{url('/add/new/product-size')}}" class="btn btn-success btn-sm" style="margin-left: 5px;"><b><i class="fas fa-plus"></i> Add Attribute</b></a>');
+                $(searchBox).append(rearrangeButton);
+            }
         });
     </script>
 

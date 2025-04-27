@@ -5,11 +5,11 @@
 @endsection
 
 @section('page_title')
-    Edit Product Size Value
+    Edit Attribute Value
 @endsection
 
 @section('page_heading')
-    Edit Product Size Value
+    Edit Attribute Value
 @endsection
 
 @section('content')
@@ -18,7 +18,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4 class="card-title mb-3">Edit Product Size Value</h4>
+                    <h4 class="card-title mb-3">Edit Attribute Value</h4>
                     <a href="{{ route('ViewAllProductSizeValue') }}" class="btn btn-secondary">
                         <i class="fas fa-arrow-left"></i>
                     </a>
@@ -29,7 +29,7 @@
                     @csrf
                     @method('POST')
 
-                    <h4 class="mb-4">Update Product Size Value</h4>
+                    <h4 class="mb-4">Update Attribute Value</h4>
 
                     <div class="row g-3">
 

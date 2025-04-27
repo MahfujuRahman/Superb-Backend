@@ -6,10 +6,10 @@
 @endsection
 
 @section('page_title')
-    Product Size Value
+    Attribute Value
 @endsection
 @section('page_heading')
-    View All Product Size Value
+    View All Attribute Value
 @endsection
 
 @section('content')
@@ -18,7 +18,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h4 class="card-title mb-3">Product Size Value Create Form</h4>
+                        <h4 class="card-title mb-3">Attribute Value Create Form</h4>
                         <a href="{{ route('ViewAllProductSizeValue')}}" class="btn btn-secondary">
                             <i class="fas fa-arrow-left"></i>
                         </a>
@@ -28,7 +28,7 @@
                         action="{{ url('/save/new/product-size-value') }}" enctype="multipart/form-data" novalidate>
                         @csrf
 
-                        <h4 class="mb-4">Add New Product Size Value</h4>
+                        <h4 class="mb-4">Add New Attribute Value</h4>
 
                         <div class="row g-3">
 
