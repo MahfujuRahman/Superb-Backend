@@ -9,8 +9,9 @@ class ProductSize extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
     public static function getDropDownList($fieldName, $id=NULL){
-        $str = "<option value=''>Select One</option>";
+        $str = "<option value=''>Select Size</option>";
         $lists = self::orderBy('serial', 'asc')->get();
         if($lists){
             foreach($lists as $list){

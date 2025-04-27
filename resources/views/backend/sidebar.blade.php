@@ -300,6 +300,24 @@
                     </span>
                 </a>
             </li>
+            <li><a href="{{ url('/add/new/product-size') }}">Add New Product Size</a></li>
+            <li>
+                <a href="{{ url('view/all/product-size') }}">
+                    View All Products Size
+                    <span style="color:lightgreen" title="Total Products">
+                        ({{DB::table('colors')->count()}})
+                    </span>
+                </a>
+            </li>
+            <li><a href="{{ url('/add/new/product-size-value') }}">Add New Product Size Value</a></li>
+            <li>
+                <a href="{{ url('view/all/product-size-value') }}">
+                    View All Products Size Value
+                    <span style="color:lightgreen" title="Total Products">
+                        ({{DB::table('product_sizes')->count()}})
+                    </span>
+                </a>
+            </li>
             <li><a href="{{ url('/add/new/product') }}">Add New Product</a></li>
             <li>
                 <a href="{{ url('/view/all/product') }}">

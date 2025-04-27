@@ -28,6 +28,7 @@ use App\Http\Controllers\PromoCodeController;
 use App\Http\Controllers\CustomPageController;
 use App\Http\Controllers\SmsServiceController;
 use App\Http\Controllers\GeneralInfoController;
+use App\Http\Controllers\ProductSizeController;
 use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\NotificationController;
@@ -43,6 +44,7 @@ use App\Http\Controllers\Account\AccountController;
 use App\Http\Controllers\Account\ExpenseController;
 use App\Http\Controllers\SubscribedUsersController;
 use App\Http\Controllers\PermissionRoutesController;
+use App\Http\Controllers\ProductSizeValueController;
 use App\Http\Controllers\Customer\CustomerController;
 use App\Http\Controllers\Account\PaymenttypeController;
 use App\Http\Controllers\Account\TransactionController;
@@ -681,13 +683,29 @@ Route::group(['middleware' => ['auth', 'CheckUserType', 'DemoMode']], function (
     Route::post('/save/assigned/role/permission', [UserRoleController::class, 'saveAssignedRolePermission'])->name('SaveAssignedRolePermission');
 
 
-      // Product Color Management
-      Route::get('/add/new/product-color', [ProductColorController::class, 'addNewProductColor'])->name('AddNewProductColor');    
-      Route::post('/save/new/product-color', [ProductColorController::class, 'saveNewProductColor'])->name('SaveNewProductColor');
-      Route::get('/view/all/product-color', [ProductColorController::class, 'viewAllProductColor'])->name('ViewAllProductColor');
-      Route::get('/delete/product-color/{slug}', [ProductColorController::class, 'deleteProductColor'])->name('DeleteProductColor');
-      Route::get('/edit/product-color/{slug}', [ProductColorController::class, 'editProductColor'])->name('EditProductColor');      
-      Route::post('/update/product-color', [ProductColorController::class, 'updateProductColor'])->name('UpdateProductColor');
+    // Product Color Management
+    Route::get('/add/new/product-color', [ProductColorController::class, 'addNewProductColor'])->name('AddNewProductColor');    
+    Route::post('/save/new/product-color', [ProductColorController::class, 'saveNewProductColor'])->name('SaveNewProductColor');
+    Route::get('/view/all/product-color', [ProductColorController::class, 'viewAllProductColor'])->name('ViewAllProductColor');
+    Route::get('/delete/product-color/{slug}', [ProductColorController::class, 'deleteProductColor'])->name('DeleteProductColor');
+    Route::get('/edit/product-color/{slug}', [ProductColorController::class, 'editProductColor'])->name('EditProductColor');      
+    Route::post('/update/product-color', [ProductColorController::class, 'updateProductColor'])->name('UpdateProductColor');
+  
+    // Product Size Management
+    Route::get('/add/new/product-size', [ProductSizeController::class, 'addNewProductSize'])->name('AddNewProductSize');    
+    Route::post('/save/new/product-size', [ProductSizeController::class, 'saveNewProductSize'])->name('SaveNewProductSize');
+    Route::get('/view/all/product-size', [ProductSizeController::class, 'viewAllProductSize'])->name('ViewAllProductSize');
+    Route::get('/delete/product-size/{slug}', [ProductSizeController::class, 'deleteProductSize'])->name('DeleteProductSize');
+    Route::get('/edit/product-size/{slug}', [ProductSizeController::class, 'editProductSize'])->name('EditProductSize');      
+    Route::post('/update/product-size', [ProductSizeController::class, 'updateProductSize'])->name('UpdateProductSize');
+
+    // Product Size Value Management
+    Route::get('/add/new/product-size-value', [ProductSizeValueController::class, 'addNewProductSizeValue'])->name('AddNewProductSizeValue');    
+    Route::post('/save/new/product-size-value', [ProductSizeValueController::class, 'saveNewProductSizeValue'])->name('SaveNewProductSizeValue');
+    Route::get('/view/all/product-size-value', [ProductSizeValueController::class, 'viewAllProductSizeValue'])->name('ViewAllProductSizeValue');
+    Route::get('/delete/product-size-value/{slug}', [ProductSizeValueController::class, 'deleteProductSizeValue'])->name('DeleteProductSizeValue');
+    Route::get('/edit/product-size-value/{slug}', [ProductSizeValueController::class, 'editProductSizeValue'])->name('EditProductSizeValue');      
+    Route::post('/update/product-size-value', [ProductSizeValueController::class, 'updateProductSizeValue'])->name('UpdateProductSizeValue');
   
 
 
