@@ -188,13 +188,16 @@ window.onload = function () {
 
             getItemTotalPrice(item) {
                 let total = item.quantity * item.price;
+
                 if(item.discount > 0) {
                     let discountAmount = (item.discount / 100) * total;
                     total -=  discountAmount;
                 }
+
                 if(item.tax > 0) {
                     let taxAmount = (item.tax / 100) * total;                    
-                    total += taxAmount;                                        
+                    total += taxAmount;            
+                    console.log("taxAmount - ", taxAmount);                            
                 }
                 
                 return total;

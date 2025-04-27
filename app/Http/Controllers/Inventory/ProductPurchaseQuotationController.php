@@ -226,6 +226,7 @@ class ProductPurchaseQuotationController extends Controller
         $productWarehouseRoomCartoon = ProductWarehouseRoomCartoon::where('product_warehouse_id', $data->product_warehouse_id)->where('product_warehouse_room_id', $data->product_warehouse_room_id)->where('status', 'active')->get();
         $suppliers = ProductSupplier::where('status', 'active')->get();
         $other_charges_types = ProductPurchaseOtherCharge::where('status', 'active')->get();
+
         return view('backend.purchase_product_quotation.edit', compact('data', 'productWarehouses', 'productWarehouseRooms', 'productWarehouseRoomCartoon', 'suppliers', 'other_charges_types'));
     }
 

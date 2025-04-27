@@ -198,7 +198,7 @@
                                                 {{ $item->title }}
                                             </label>
                                             <div class="col-sm-4">
-                                                <input type="hidden" name="other_charges[{{ $key }}][title]" value="{{ $item->title }}">
+                                                <input type="hidden" class="other_charges_title" name="other_charges[{{ $key }}][title]" value="{{ $item->title }}">
                                                 <input type="text" 
                                                     class="form-control text-right only_currency other_charges_amount other_charges_amount{{ $key }}"
                                                     name="other_charges[{{ $key }}][amount]"
