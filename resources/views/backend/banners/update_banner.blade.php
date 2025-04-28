@@ -26,7 +26,7 @@
                         <div class="row">
                             <div class="col-lg-4">
                                 <div class="form-group">
-                                    <label for="banner">Banner Image <span class="text-danger">*</span></label>
+                                    <label for="banner">Banner Image (1531 × 400) <span class="text-danger">*</span></label>
                                     <input type="file" name="image" class="dropify" data-height="262" data-max-file-size="1M" accept="image/*"/>
                                 </div>
                                 <div class="form-group">
@@ -51,11 +51,12 @@
                                             <select class="form-control" name="position" id="position" required>
                                                 <option value="">Select Option</option>
                                                 <option value="top" @if($data->position == 'top') selected @endif>Top (Homepage)</option>
-                                                <option value="left" @if($data->position == 'left') selected @endif>Left (Homepage)</option>
-                                                <option value="right" @if($data->position == 'right') selected @endif>Right (Homepage)</option>
+                                                {{-- <option value="left" @if($data->position == 'left') selected @endif>Left (Homepage)</option>
+                                                <option value="right" @if($data->position == 'right') selected @endif>Right (Homepage)</option> --}}
                                                 <option value="middle" @if($data->position == 'middle') selected @endif>Middle (Homepage)</option>
                                                 <option value="bottom" @if($data->position == 'bottom') selected @endif>Bottom (Homepage)</option>
-                                                <option value="shop" @if($data->position == 'shop') selected @endif>Top (ShopPage)</option>
+                                                <option value="popup" @if($data->position == 'popup') selected @endif>PopUp</option>
+                                                {{-- <option value="shop" @if($data->position == 'shop') selected @endif>Top (ShopPage)</option> --}}
                                             </select>
                                         </div>
                                     </div>

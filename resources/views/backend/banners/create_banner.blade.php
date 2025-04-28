@@ -43,11 +43,12 @@
                                             <select class="form-control" name="position" id="position" required>
                                                 <option value="">Select Option</option>
                                                 <option value="top">Top (Homepage)</option>
-                                                <option value="left">Left (Homepage)</option>
-                                                <option value="right">Right (Homepage)</option>
+                                                {{-- <option value="left">Left (Homepage)</option>
+                                                <option value="right">Right (Homepage)</option> --}}
                                                 <option value="middle">Middle (Homepage)</option>
                                                 <option value="bottom">Bottom (Homepage)</option>
-                                                <option value="shop">Top (ShopPage)</option>
+                                                <option value="popup">PopUp</option>
+                                                {{-- <option value="shop">Top (ShopPage)</option> --}}
                                             </select>
                                         </div>
                                     </div>
