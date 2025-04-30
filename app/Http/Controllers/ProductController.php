@@ -43,8 +43,6 @@ class ProductController extends Controller
 
     public function saveNewProduct(Request $request){
 
-        dd(request()->all());
-
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'category_id' => 'required',

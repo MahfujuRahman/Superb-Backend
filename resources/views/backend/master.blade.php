@@ -197,7 +197,7 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="text-sm-right d-none d-sm-block">
-                                Design & Developed by Getup Ltd.
+                                <a href="https://techparkit.org/">Design & Developed by Tech Park IT Ltd.</a>
                             </div>
                         </div>
                     </div>
