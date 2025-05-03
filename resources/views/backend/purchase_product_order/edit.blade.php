@@ -335,10 +335,14 @@
 
                                 </table>
                             </div>
-
                         </div>
-
-                        <button type="submit" class="btn btn-success mt-3">Submit Purchase</button>
+                        @if ($data?->order_status == "pending")   
+                            <button type="submit" class="btn btn-success mt-3">Submit Purchase</button>
+                        @else
+                            <div class="alert alert-info mt-3">
+                                Order has already been confirmed and cannot be modified.
+                            </div>
+                        @endif
                     </form>
 
                 </div>
