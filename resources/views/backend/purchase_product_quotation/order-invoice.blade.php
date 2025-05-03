@@ -123,6 +123,7 @@
                             <thead>
                                 <tr>
                                     <th>Product</th>
+                                    <th>Product</th>
                                     <th>Quantity</th>
                                     <th>Unit Price</th>
                                     <th>Discount (%)</th>
@@ -135,7 +136,7 @@
                                 {{-- @{{ purchaseItems }} --}}
                                 <tr v-for="(item, index) in purchaseItems" :key="index" v-if="item.isVisible">
                                     <input type="hidden" class="form-control total" :name="`product[${index}][id]`"
-                                        v-model="item.id" readonly>
+                                        v-model="item.product_id" readonly>
                                     <td>
                                         <input type="text" class="form-control total" :name="`product[${index}][name]`"
                                             v-model="item.name" readonly>

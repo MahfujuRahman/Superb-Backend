@@ -240,7 +240,7 @@ class ProductPurchaseOrderController extends Controller
 
     public function updatePurchaseProductOrder(Request $request)
     {
-
+        dd(request()->all());
         $other_charge_total = $this->calc_other_charges(request()->other_charges, request()->subtotal);
 
         $order = ProductPurchaseOrder::where('id', request()->purchase_product_order_id)->first();
@@ -306,7 +306,7 @@ class ProductPurchaseOrderController extends Controller
             $existingProduct = ProductPurchaseOrderProduct::where('product_purchase_order_id', $order->id)
                 ->where('product_id', $product_id)
                 ->first();
-
+            
             if ($existingProduct) {
                 // Update the existing record
                 $existingProduct->update([
@@ -324,6 +324,7 @@ class ProductPurchaseOrderController extends Controller
                     'slug' => $product_slug,
                     'updated_at' => now(),
                 ]);
+
             } else {
                 // Insert new record
                 ProductPurchaseOrderProduct::create([
@@ -392,6 +393,18 @@ class ProductPurchaseOrderController extends Controller
             $product_stock->status = 'active';
             $product_stock->slug = $slug;
             $product_stock->save();
+
+            $productModel = Product::where('id', $product->product_id)->first();
+            // logger()->info('Product Model:', ['productModel' => $productModel]);
+            if ($productModel) {
+                // logger()->info('Product found:', ['product_id' => $productModel->id, 'current_stock' => $productModel->stock]);
+                $productModel->stock += $product_stock->qty;
+                // logger()->info('Updated stock:', ['product_id' => $productModel->id, 'new_stock' => $productModel->stock]);
+                $productModel->update();
+                // logger()->info('Product stock updated successfully.', ['product_id' => $productModel->id]);
+            } else {
+                logger()->warning('Product not found for stock update.', ['product_id' => $product->product_id]);
+            }
         }
 
 

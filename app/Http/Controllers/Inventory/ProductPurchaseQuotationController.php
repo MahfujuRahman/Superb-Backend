@@ -55,17 +55,8 @@ class ProductPurchaseQuotationController extends Controller
 
     public function saveNewPurchaseProductQuotation(Request $request)
     {
-        // dd(request()->all());
-        // $request->validate([
-        //     'title' => ['required', 'string', 'max:255'],
-        //     'product_warehouse_id' => ['required'],
-        //     'product_warehouse_room_id' => ['required'],
-        // ], [
-        //     'title.required' => 'title is required.',
-        // ]);
-
-        // dd(5);
-
+        // dd(request()->all(), $request->product);
+     
         $other_charge_total = $this->calc_other_charges(request()->other_charges, request()->subtotal);
 
         $random_no = random_int(100, 999) . random_int(1000, 9999);
@@ -161,8 +152,6 @@ class ProductPurchaseQuotationController extends Controller
 
         Toastr::success('Quotation has been added successfully!', 'Success');
         return back();
-        // return redirect()->back()->with('success', 'Product Warehouse has been added successfully!');
-        // return redirect()->back()->with('error', 'An error occurred!');
     }
 
     public function viewAllPurchaseProductQuotation(Request $request)
@@ -391,7 +380,6 @@ class ProductPurchaseQuotationController extends Controller
     public function updatePurchaseProductSalesQuotation(Request $request)
     {
         $other_charge_total = $this->calc_other_charges(request()->other_charges, request()->subtotal);
-        // dd($other_charge_total, request()->all());
 
         $random_no = random_int(100, 999) . random_int(1000, 9999);
         $slug = Str::orderedUuid() . uniqid() . $random_no;
@@ -484,7 +472,6 @@ class ProductPurchaseQuotationController extends Controller
 
         Toastr::success('Order has been added successfully!', 'Success');
         return redirect()->route('ViewAllPurchaseProductOrder');
-        // return back();
     }
 
 

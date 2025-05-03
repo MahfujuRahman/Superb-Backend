@@ -163,6 +163,7 @@
         });
 
         $('body').on('click', '.deleteBtn', function() {
+        console.log('Delete button clicked');
             var productProductQuotationSlug = $(this).data("id");
             if (confirm("Are You sure want to delete !")) {
                 $.ajax({
@@ -187,5 +188,7 @@
                 });
             }
         });
+
+        
     </script>
 @endsection

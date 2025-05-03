@@ -108,7 +108,7 @@ window.onload = function () {
                 await axios.get(`${location.origin}/api/edit/purchase-product/quotation/${slug}`)
                     .then(response => {
                         this.editData = response.data.data;
-                        console.log("this.editData --- ", this.editData);
+                        console.log("this.editData g--- ", this.editData);
 
                         this.purchaseItems = this.editData.quotation_products.map(item => ({
                             ...item,
