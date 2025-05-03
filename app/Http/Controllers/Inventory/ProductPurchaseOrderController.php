@@ -240,7 +240,7 @@ class ProductPurchaseOrderController extends Controller
 
     public function updatePurchaseProductOrder(Request $request)
     {
-        dd(request()->all());
+        // dd(request()->all());
         $other_charge_total = $this->calc_other_charges(request()->other_charges, request()->subtotal);
 
         $order = ProductPurchaseOrder::where('id', request()->purchase_product_order_id)->first();

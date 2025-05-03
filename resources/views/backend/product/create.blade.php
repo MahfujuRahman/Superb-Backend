@@ -420,10 +420,10 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group" style="display: flex; align-items: center; gap: 10px;">
-                                    <label for="fabrication" style="width: 120px; text-align: right;">Fabrication</label>
-                                    <textarea name="fabrication" id="fabrication" cols="150" rows="6"></textarea>
-                                    <div class="invalid-feedback" style="display: block;">
+                                <div class="form-group" >
+                                    <label for="fabrication">Fabrication</label>
+                                    <textarea name="fabrication" id="fabrication" cols="12" class="form-control" rows="3"></textarea>
+                                    <div class="invalid-feedback " style="display: block;">
                                         @error('fabrication')
                                             {{ $message }}
                                         @enderror

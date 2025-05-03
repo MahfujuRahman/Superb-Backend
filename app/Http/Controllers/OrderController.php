@@ -542,6 +542,7 @@ class OrderController extends Controller
 
     public function orderDetails($slug){
         $order = Order::where('slug', $slug)->first();
+        
         $userInfo = User::where('id', $order->user_id)->first();
         $shippingInfo = ShippingInfo::where('order_id', $order->id)->first();
         $billingAddress = BillingAddress::where('order_id', $order->id)->first();
@@ -564,7 +565,7 @@ class OrderController extends Controller
                             ->where('order_details.order_id', $order->id)
                             ->get();
         $generalInfo = DB::table('general_infos')->select('logo', 'logo_dark', 'company_name')->first();
-        // dd($orderDetails);
+
         return view('backend.orders.details', compact('order', 'shippingInfo', 'billingAddress', 'orderDetails', 'userInfo', 'generalInfo'));
     }
 
