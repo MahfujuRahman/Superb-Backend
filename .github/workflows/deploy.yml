@@ -19,4 +19,5 @@ jobs:
           script: |
             cd ${{ secrets.PROJECT_PATH }}
             git config --global --add safe.directory ${{ secrets.PROJECT_PATH }}
-            git pull origin main
+            git pull origin master
+            
