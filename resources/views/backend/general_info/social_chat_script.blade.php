@@ -43,7 +43,7 @@
                                     <i class="mdi mdi-settings-outline d-lg-none d-block"></i>
                                     <span class="d-none d-lg-block">Google Tag Manager</span>
                                 </a>
-                                <a class="nav-link" id="v-pills-fp-tab" data-toggle="pill" href="#v-pills-fp" role="tab" aria-controls="v-pills-fp"
+                                {{-- <a class="nav-link" id="v-pills-fp-tab" data-toggle="pill" href="#v-pills-fp" role="tab" aria-controls="v-pills-fp"
                                     aria-selected="false">
                                     <i class="mdi mdi-settings-outline d-lg-none d-block"></i>
                                     <span class="d-none d-lg-block">Facebook Pixel</span>
@@ -53,27 +53,27 @@
                                     aria-selected="true">
                                     <i class="mdi mdi-home-variant d-lg-none d-block"></i>
                                     <span class="d-none d-lg-block">Google Recaptcha</span>
-                                </a>
+                                </a> --}}
                                 <a class="nav-link" id="v-pills-sl-tab" data-toggle="pill" href="#v-pills-sl" role="tab" aria-controls="v-pills-sl"
                                     aria-selected="false">
                                     <i class="mdi mdi-settings-outline d-lg-none d-block"></i>
                                     <span class="d-none d-lg-block">Social Login</span>
                                 </a>
-                                <a class="nav-link" id="v-pills-messenger-chat-tab" data-toggle="pill" href="#v-pills-messenger-chat" role="tab" aria-controls="v-pills-messenger-chat"
+                                {{-- <a class="nav-link" id="v-pills-messenger-chat-tab" data-toggle="pill" href="#v-pills-messenger-chat" role="tab" aria-controls="v-pills-messenger-chat"
                                     aria-selected="false">
                                     <i class="mdi mdi-account-circle d-lg-none d-block"></i>
                                     <span class="d-none d-lg-block">Messenger Chat Plugin</span>
-                                </a>
+                                </a> --}}
                                 <a class="nav-link" id="v-pills-tawk-tab" data-toggle="pill" href="#v-pills-tawk" role="tab" aria-controls="v-pills-tawk"
                                     aria-selected="false">
                                     <i class="mdi mdi-account-circle d-lg-none d-block"></i>
                                     <span class="d-none d-lg-block">Tawk.to Live Chat</span>
                                 </a>
-                                <a class="nav-link" id="v-pills-crisp-tab" data-toggle="pill" href="#v-pills-crisp" role="tab" aria-controls="v-pills-crisp"
+                                {{-- <a class="nav-link" id="v-pills-crisp-tab" data-toggle="pill" href="#v-pills-crisp" role="tab" aria-controls="v-pills-crisp"
                                     aria-selected="false">
                                     <i class="mdi mdi-settings-outline d-lg-none d-block"></i>
                                     <span class="d-none d-lg-block">Crisp Live Chat</span>
-                                </a>
+                                </a> --}}
                             </div>
                         </div> <!-- end col-->
 
