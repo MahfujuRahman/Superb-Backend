@@ -26,6 +26,7 @@ use App\Http\Controllers\WishListController;
 use App\Http\Controllers\WithdrawController;
 use App\Http\Controllers\PromoCodeController;
 use App\Http\Controllers\CustomPageController;
+use App\Http\Controllers\SideBannerController;
 use App\Http\Controllers\SmsServiceController;
 use App\Http\Controllers\GeneralInfoController;
 use App\Http\Controllers\ProductSizeController;
@@ -706,6 +707,14 @@ Route::group(['middleware' => ['auth', 'CheckUserType', 'DemoMode']], function (
     Route::get('/delete/product-size-value/{slug}', [ProductSizeValueController::class, 'deleteProductSizeValue'])->name('DeleteProductSizeValue');
     Route::get('/edit/product-size-value/{slug}', [ProductSizeValueController::class, 'editProductSizeValue'])->name('EditProductSizeValue');      
     Route::post('/update/product-size-value', [ProductSizeValueController::class, 'updateProductSizeValue'])->name('UpdateProductSizeValue');
+
+    // SideBanner Management
+    Route::get('/add/new/side-banner', [SideBannerController::class, 'addNewSideBanner'])->name('AddNewSideBanner');    
+    Route::post('/save/new/side-banner', [SideBannerController::class, 'saveNewSideBanner'])->name('SaveNewSideBanner');
+    Route::get('/view/all/side-banner', [SideBannerController::class, 'viewAllSideBanner'])->name('ViewAllSideBanner');
+    Route::get('/delete/side-banner/{slug}', [SideBannerController::class, 'deleteSideBanner'])->name('DeleteSideBanner');
+    Route::get('/edit/side-banner/{slug}', [SideBannerController::class, 'editSideBanner'])->name('EditSideBanner');      
+    Route::post('/update/side-banner', [SideBannerController::class, 'updateSideBanner'])->name('UpdateSideBanner');
   
 
 

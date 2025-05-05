@@ -689,6 +689,7 @@
             <li><a href="{{ url('/view/all/sliders') }}">View All Sliders</a></li>
             <li><a href="{{ url('/view/all/banners') }}">View All Banners</a></li>
             <li><a href="{{ url('/view/promotional/banner') }}">Promotional Banner</a></li>
+            <li><a href="{{ url('/view/all/side-banner') }}">Side Banner</a></li>
         </ul>
     </li>
     <li>
